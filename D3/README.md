@@ -1,4 +1,4 @@
-# D3-Basics
+# D3
 
 Some small graphs to learn how to use the D3.js library.
 
