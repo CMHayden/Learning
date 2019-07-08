@@ -1,10 +1,4 @@
-# D3
-
-Some small graphs to learn how to use the D3.js library.
-
----
-
-## D3: Data-Driven Documents
+# D3: Data-Driven Documents
 
 <a href="https://d3js.org"><img src="https://d3js.org/logo.svg" align="left" hspace="10" vspace="6"></a>
 
