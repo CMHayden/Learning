@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>My Cart</h1>
+        <img src="images/maximize.svg" alt="Expand Cart" id="cta">
+        <p class="price">$455</p>
+
+        <div class="info">
+            <div class="item">
+                <div class="description">
+                    <a href="#">Sass Fundamentals</a>
+                    <p>Get sassy in this sass course!</p>
+                </div>
+                <p class="subprice">$55</p>
+            </div>
+
+            <div class="item">
+                <div class="description">
+                    <a href="#">Sass Fundamentals</a>
+                    <p>Get sassy in this sass course!</p>
+                </div>
+                <p class="subprice">$55</p>
+            </div>
+
+            <div class="item">
+                <div class="description">
+                    <a href="#">Sass Fundamentals</a>
+                    <p>Get sassy in this sass course!</p>
+                </div>
+                <p class="subprice">$55</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="//daybrush.com/scenejs/release/latest/dist/scene.min.js"></script>
+
+    <script>
+        var cta = document.getElementById("cta");
+
+        var scene = new Scene({
+            ".container": [
+                {
+                    transform: "scale(.7)",
+                    opacity: 0
+                },
+                {
+                    transform: "scale(1)",
+                    opacity: 1
+                }
+            ]
+        },
+        {
+            duration: 2,
+            easing: Scene.EASE_IN_OUT,
+            selector: true
+        }).playCSS();
+
+        var scene2 = new Scene({
+            "#cta" : {
+                0: {
+                    transform: {
+                        scale: 1
+                    }
+                },
+                .3: {
+                    transform: {
+                        scale: 1.5
+                    }
+                },
+                .5: {
+                    transform: {
+                        scale: 1
+                    }
+                }
+            },
+            ".container":{
+                .4: {
+                    transform: "scale(1)",
+                    height: '5%',
+                    opacity: 1
+                },
+                .7: {
+                    height: '60%',
+                }
+            },
+            ".info": {
+                .7: {
+                    display: 'block',
+                    opacity: '0'
+                },
+                1.5: {
+                    opacity: '1'
+                }
+            },
+            ".item" : function(i) {
+                return {
+                    0: {
+                        opacity: '0'
+                    },
+                    .5: {
+                        opacity: '1'
+                    },
+                    options: {
+                        delay: i * .5
+                    }
+                }
+            }
+        },
+        {
+            easing: Scene.EASE_IN_OUT,
+            selector: true
+        })
+
+        cta.addEventListener('click', () => {
+            if(scene2.getDirection() === 'normal') {
+                scene2.playCSS()
+                scene2.setDirection('reverse')
+            } else {
+                scene2.removeItem("#cta")
+                scene2.playCSS()
+                scene2.setDirection('normal')
+            }
+            scene2.playCSS()
+        })
+
+    </script>
+</body>
+</html>
