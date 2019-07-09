@@ -99,7 +99,7 @@
         <div class="container">
             <h1 id="cta">Communicate</h1>
 
-            <form action="/" method="POST">
+            <form action="/api/" method="POST">
                 <div class="form">
                     <div class="item">
                         <div class="description">
