@@ -8,6 +8,7 @@ The goal of this project is to practice and learn new libraries, frameworks and 
 ---
 
 ## Libraries
+
 * Greensock - GreenSock Animation Platform (GSAP) is a suite of tools for scripted, high-performance HTML5 animations in all major browsers. Popular, reliable, and fast. [Find greensock here](https://greensock.com/)
 
 * Scene.js - SceneJS is an open-source WebGL-based 3D visualization engine. It is an alternative to GSAP. [Find scene here](http://daybrush.com/scenejs/)
@@ -22,14 +23,17 @@ The goal of this project is to practice and learn new libraries, frameworks and 
 
 * Parsley - Validating forms frontend have never been so powerful and easy. [Find parsley here](https://parsleyjs.org/)
 
+* Handsontable - Handsontable is a JavaScript Spreadsheet Component available for pure JavaScript, React, Angular and Vue. [Find handsontable here](https://handsontable.com/)
+
 ## Frameworks
+
 * Laravel - Laravel is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller architectural pattern and based on Symfony.
 
 * React - React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
 
 * Flutter - Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions. 
 
-* WordPress
+* WordPress - Open source software which you can use to easily create a beautiful website, blog, or app.
 
 * Node Js - Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.
 
@@ -40,6 +44,42 @@ The goal of this project is to practice and learn new libraries, frameworks and 
 * Angular - Angular is a TypeScript-based open-source web application framework led by the Angular Team at Google and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built AngularJS.
 
 * Vue - Vue.js is an open-source JavaScript framework for building user interfaces and single-page applications.
+
+## Packages & Others
+
+* GuzzleHTTP - Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and trivial to integrate with web services. [Find guzzle here](https://github.com/guzzle/guzzle)
+
+* Twilio - Cloud communications platform for building SMS, Voice & Messaging applications on an API built for global scale. [Find twilio here](https://twilio.com/)
+
+* AWS - Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services. [Find AWS here](https://www.aws.amazon.com/)
+
+* Mailgun - Powerful Transactional Email APIs that enable you to send, receive, and track emails, built with developers in mind. [Find mailgun here](https://www.mailgun.com/)
+
+---
+
+## Projects
+
+Here are links to some larger projects I have done with some of these technologies:
+
+* [CD La Molinera](https://github.com/CMHayden/cdLaMolinera)
+    * WordPress
+    * Bootstrap
+
+* [Flask Guestbook](https://github.com/CMHayden/flask-guestbook)
+    * Flask
+    * Bootstrap
+
+* [SMS Subscriber](https://github.com/CMHayden/management.products.api.subscriber.sms)
+    * Laravel
+    * AWS SNS
+    * Twilio
+    * Guzzle
+
+* [Email Subscriber](https://github.com/CMHayden/management.products.api.subscriber.email)
+    * Laravel
+    * AWS SNS
+    * Mailgun
+    * Guzzle
 
 ---
 
