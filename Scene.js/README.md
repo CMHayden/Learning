@@ -2,8 +2,8 @@
 
 Scene.js is a java script animation library. It is an alternative to GSAP. Here you can find:
 
-*   Snippits - handy snippits of doing some basic animations
-*   Projects - small projects (ie animated shopping cart) used to practice scene.js in a more realistic environment.
+*   Snippits - handy snippits of doing some basic animations mostly taken from small projects
+*   Projects - small projects used to practice scene.js in a more realistic environment.
 
 ---
 
