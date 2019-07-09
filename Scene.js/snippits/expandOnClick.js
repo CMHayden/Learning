@@ -4,6 +4,8 @@
 *   The property for transformation can be done in this way or the same way as fadeIn.js
 *
 *   To modify the size, change scale. Speed, change the numbered objects.
+*
+*   To make it go in reverse order (ie to close a menu) use the commented out code below
 */
 
 
@@ -36,3 +38,15 @@ var scene2 = new Scene({
 cta.addEventListener('click', () => {
     scene2.playCSS()
 })
+
+// cta.addEventListener('click', () => {
+//     if(scene2.getDirection() === 'normal') {
+//         scene2.playCSS()
+//         scene2.setDirection('reverse')
+//     } else {
+//         scene2.removeItem("#cta")
+//         scene2.playCSS()
+//         scene2.setDirection('normal')
+//     }
+//     scene2.playCSS()
+// })
