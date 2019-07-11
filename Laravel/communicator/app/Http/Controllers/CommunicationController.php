@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
+use Mailgun\Mailgun;
 
 
 class CommunicationController extends Controller
@@ -34,7 +35,20 @@ class CommunicationController extends Controller
     }
 
     public function sendEmail($request) {
-        //
+
+        $mg = Mailgun::create(env('MAILGUN_SECRET'));
+        $email = env('MAIL_TO_ADDRESS');
+
+        $message_body = $request['message'];
+        $from =         $request['email'];
+
+        $mg->messages()->send(env('MAILGUN_DOMAIN'), [
+            'from'    => "COMMUNICATOR <$from>",
+            'to'      => "<$email>",
+            'subject' => 'Communicator Message',
+            'text'    => "$message_body"
+        ]);
+        return app('Illuminate\Http\Response')->status();
     }
 
 }
