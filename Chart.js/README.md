@@ -40,7 +40,13 @@ $ npm install chart.js --save
 $ bower install chart.js --save
 ```
 
+### Helpful links
+
+* (Chart.js samples)[https://www.chartjs.org/samples/latest/]
+* (The documentation)[https://www.chartjs.org/docs/latest/]
+
 ## Projects
 
 * barchart.html - Basic bar chart with population statistics from different cities.
 * piechart.html - Pie chart which uses (this list of population by continents)[https://en.wikipedia.org/wiki/List_of_continents_by_population].
+* doughnutchart.html - Doughnut chart which uses (this list of population by continents)[https://en.wikipedia.org/wiki/List_of_continents_by_population].
