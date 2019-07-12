@@ -59,7 +59,7 @@ The goal of this project is to practice and learn new libraries, frameworks and 
 
 ## Projects
 
-Here are links to some larger projects I have done with some of these technologies:
+Here are links to some larger projects I have done with some of these technologies (if the project link isn't working, the project may be private while working on it, but will be made public once finished):
 
 * [CD La Molinera](https://github.com/CMHayden/cdLaMolinera)
     * WordPress
