@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Multi-Line Chart</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+</head>
+<body>
+    <canvas id="myChart"></canvas>
+
+    <script>
+
+var ctx = document.getElementById("myChart").getContext('2d');
+
+var color = Chart.helpers.color;
+
+//  Data definition
+var europeData = [657221000, 693859000,	721086000,	726407000,	735395000,	741447158];
+
+//  Labels for data
+var labels = ["1970",	"1980",	"1990",	"2000",	"2010",	"2016",];
+
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Europe',        // Name of the series
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderColor: 'rgb(255, 99, 132)',
+            fill: false,
+            data: europeData,             // Specifying values from data array
+        },{
+            label: 'Asia',
+            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+            borderColor: 'rgb(54, 162, 235)',
+            fill: false,
+            data: [
+                2120430000,
+                2625584000,
+                3202475000,
+                3714470000,
+                4169850000,
+                4462676731
+            ]
+        },{
+            label: 'Africa',
+            backgroundColor: 'rgba(75, 192, 192, 0.5)',
+            borderColor: 'rgb(75, 192, 192)',
+            fill: false,
+            data: [
+                365626000,
+                477965000,
+                631614000,
+                814063000,
+                1044107000,
+                1225080510
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRation: false
+    }
+});
+
+    </script>
+</body>
+</html>
