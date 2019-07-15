@@ -1,59 +1,62 @@
-
 # Learning
 
 A repository with small projects used to learn new libraries and frameworks. This will be continously updated as I progress and learn more. The main focus will be on front end web development, creating APIs, designing databases, and creating mobile applications.
 
-The goal of this project is to practice and learn new libraries, frameworks and languages, while challenging myself to create easy to read and understand documentation for use later.
+The goal of this project is to practice and learn new libraries, frameworks and languages, while challenging myself to create easy to read and understand documentation for later use, or snippits to be able to grab for other projects. A secondary goal would be to have this project help at least 1 person to learn something new. If this person happens to be you, please get in touch to let me know!
+
+*Note:
+Some of these libraries or frameworks may not be incorporated yet, or may only be incorporated through links to projects below where I have used them.*
 
 ---
 
 ## Libraries
 
-* Greensock - GreenSock Animation Platform (GSAP) is a suite of tools for scripted, high-performance HTML5 animations in all major browsers. Popular, reliable, and fast. [Find greensock here](https://greensock.com/)
+* [Bootstrap](https://getbootstrap.com/) - Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation and other interface components. 
 
-* Scene.js - SceneJS is an open-source WebGL-based 3D visualization engine. It is an alternative to GSAP. [Find scene here](http://daybrush.com/scenejs/)
+* [Chart.js](https://www.chartjs.org/) - Simple, clean and engaging HTML5 based JavaScript charts. Chart.js is an easy way to include animated, interactive graphs on your website for free.
 
-* D3 - D3.js is a JavaScript library for producing dynamic, interactive data visualizations in web browsers.  [Find D3 here](https://d3js.org/)
+* [D3](https://d3js.org/) - D3.js is a JavaScript library for producing dynamic, interactive data visualizations in web browsers.
 
-* Chart.js - Simple, clean and engaging HTML5 based JavaScript charts. Chart.js is an easy way to include animated, interactive graphs on your website for free. [Find chart.js here](https://www.chartjs.org/)
+* [Greensock](https://greensock.com/) - GreenSock Animation Platform (GSAP) is a suite of tools for scripted, high-performance HTML5 animations in all major browsers. Popular, reliable, and fast.
 
-* Bootstrap - Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation and other interface components. [Find bootstrap here](https://getbootstrap.com/)
+* [Handsontable](https://handsontable.com/) - Handsontable is a JavaScript Spreadsheet Component available for pure JavaScript, React, Angular and Vue. 
 
-* Modernizr - Modernizr is a JavaScript library which is designed to detect HTML5 and CSS3 features in various browsers, which lets JavaScript avoid using unimplemented features or use a workaround such as a shim to emulate them. Modernizr aims to provide this feature detection in a complete and standardized manner.  [Find modernizr here](https://modernizr.com/)
 
-* Parsley - Validating forms frontend have never been so powerful and easy. [Find parsley here](https://parsleyjs.org/)
+* [Modernizr](https://modernizr.com/) - Modernizr is a JavaScript library which is designed to detect HTML5 and CSS3 features in various browsers, which lets JavaScript avoid using unimplemented features or use a workaround such as a shim to emulate them. Modernizr aims to provide this feature detection in a complete and standardized manner.
 
-* Handsontable - Handsontable is a JavaScript Spreadsheet Component available for pure JavaScript, React, Angular and Vue. [Find handsontable here](https://handsontable.com/)
+* [Parsley](https://parsleyjs.org/) - Validating forms frontend have never been so powerful and easy.
+
+* [Scene.js](http://daybrush.com/scenejs/) - SceneJS is an open-source WebGL-based 3D visualization engine. It is an alternative to GSAP.
 
 ## Frameworks
 
-* Laravel - Laravel is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller architectural pattern and based on Symfony.
+* [Angular](https://angular.io/) - Angular is a TypeScript-based open-source web application framework led by the Angular Team at Google and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built AngularJS.
 
-* React - React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
+* [Django](https://www.djangoproject.com/) - Django is a Python-based free and open-source web framework, which follows the model-template-view architectural pattern. Django's primary goal is to ease the creation of complex, database-driven websites.
 
-* Flutter - Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions. 
+* [Flask](https://palletsprojects.com/p/flask/) - Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions. 
 
-* WordPress - Open source software which you can use to easily create a beautiful website, blog, or app.
+* [Flutter](https://flutter.dev/) - Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions. 
 
-* Node Js - Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.
+* [Laravel](https://laravel.com/) - Laravel is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller architectural pattern and based on Symfony.
 
-* Django - Django is a Python-based free and open-source web framework, which follows the model-template-view architectural pattern. Django's primary goal is to ease the creation of complex, database-driven websites.
+* [React](https://reactjs.org/) - React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
 
-* Flask - Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries. It has no database abstraction layer, form validation, or any other components where pre-existing third-party libraries provide common functions. 
+* [WordPress](https://wordpress.org/) - Open source software which you can use to easily create a beautiful website, blog, or app.
 
-* Angular - Angular is a TypeScript-based open-source web application framework led by the Angular Team at Google and by a community of individuals and corporations. Angular is a complete rewrite from the same team that built AngularJS.
+* [Node Js](https://nodejs.org) - Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.
 
-* Vue - Vue.js is an open-source JavaScript framework for building user interfaces and single-page applications.
+* [Vue](https://vuejs.org/) - Vue.js is an open-source JavaScript framework for building user interfaces and single-page applications.
 
 ## Packages & Others
 
-* GuzzleHTTP - Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and trivial to integrate with web services. [Find guzzle here](https://github.com/guzzle/guzzle)
+* [GuzzleHTTP](https://github.com/guzzle/guzzle) - Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and trivial to integrate with web services. 
 
-* Twilio - Cloud communications platform for building SMS, Voice & Messaging applications on an API built for global scale. [Find twilio here](https://twilio.com/)
+* [Twilio](https://twilio.com/) - Cloud communications platform for building SMS, Voice & Messaging applications on an API built for global scale. 
 
-* AWS - Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services. [Find AWS here](https://www.aws.amazon.com/)
+* [AWS](https://www.aws.amazon.com/) - Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services.
 
-* Mailgun - Powerful Transactional Email APIs that enable you to send, receive, and track emails, built with developers in mind. [Find mailgun here](https://www.mailgun.com/)
+* [Mailgun](https://www.mailgun.com/) - Powerful Transactional Email APIs that enable you to send, receive, and track emails, built with developers in mind.
 
 ---
 
@@ -61,21 +64,29 @@ The goal of this project is to practice and learn new libraries, frameworks and 
 
 Here are links to some larger projects I have done with some of these technologies (if the project link isn't working, the project may be private while working on it, but will be made public once finished):
 
-* [CD La Molinera](https://github.com/CMHayden/cdLaMolinera)
-    * WordPress
-    * Bootstrap
+* [Dashboard](https://github.com/CMHayden/Laravel-Dashboard)
+Simple dashboard made to practice vue. The idea behind doing a dashboard was because at work I see lot's of dashboards in the management software. I though how these are made? And went away to give it a shot. The data used was created by faker.The technologies used were:
+    * Laravel
+    * Vue
+    * Axios
+    * Chartisan
+    * Faker
 
 * [Flask Guestbook](https://github.com/CMHayden/flask-guestbook)
+Short flask project I did to see what flask was about. I heard of flask on a podcast and I knew python could be used for web development, but I had never tried. So I came up with the idea of making a guest book. The technologies used were:
     * Flask
     * Bootstrap
+    * SQLite
 
 * [SMS Subscriber](https://github.com/CMHayden/management.products.api.subscriber.sms)
+Work project made to subscribe a URL to a topic on amazons simple notification service and send SMS notifications on updates. It detects if the notification is the initial confirmation, and if so, sends a get request to the url subscribing to the topic. The technologies used were:
     * Laravel
     * AWS SNS
     * Twilio
     * Guzzle
 
 * [Email Subscriber](https://github.com/CMHayden/management.products.api.subscriber.email)
+Work project made to subscribe a URL to a topic on amazons simple notification service and send email notifications on updates. It detects if the notification is the initial confirmation, and if so, sends a get request to the url subscribing to the topic. The technologies used were:
     * Laravel
     * AWS SNS
     * Mailgun
