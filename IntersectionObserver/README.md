@@ -9,3 +9,5 @@ We can use them to watch for when things enter or leave the viewport, and we can
 * Lazy Loading - intersection observer api can be used to load an image prior to it entering the viewport.
 
 * Changing nav bar - intersection observer api can be used to change the navigation bar as a user scrolls, be it to change the background color or be it to change the active tab.
+
+* Slide In - intersection observer api can be used to make content slide in when it appears within the viewport. 
