@@ -6,9 +6,30 @@
 
 D3.js can be found [on github](https://github.com/d3/d3) or [on the D3 website](https://d3js.org).
 
----
+## Getting started
 
-## Current Graphs
+To get started with D3, you can use the direct download or use a cdn.
+
+### Direct download
+
+You can directly download D3 [here]() and add it manually to your project.
+
+### CDN
+
+With the CDN you just need to copy and paste this script into your html
+
+```html
+<script src="https://d3js.org/d3.v5.min.js"></script>
+```
+
+## Useful Links
+
+The best resource I have found for bootstrap are:
+*[D3 Examples](https://github.com/d3/d3/wiki/Gallery) - shows examples of what can be built with D3.
+
+*[D3 Documentation](https://github.com/d3/d3/wiki) - documentation from D3 on how to use D3 in your project.
+
+## Current examples in this repo
 * Bar Chart
 * Pie Chart
 * Line Chart
