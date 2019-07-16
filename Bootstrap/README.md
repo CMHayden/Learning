@@ -1,5 +1,13 @@
 # Bootstrap
 
+Bootstrap is a framework/library for developing responsive, mobile first projects on the web. It can be boiled down to three main files:
+
+* Bootstrap.css - a css framework.
+* Bootstrap.js - a JavaScript/JQuery framework.
+* Glyphicons - an icon set.
+
+Bootstrap requires jquery to work. Jquery is a popular java script library that both simplifies and adds cross browsers compatibility to JavaScript.
+
 ## Getting started
 
 ### Package manager
