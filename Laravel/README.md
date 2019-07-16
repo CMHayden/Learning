@@ -32,5 +32,16 @@ foo@bar:~$ php artisan make:auth
 foo@bar:~$ php artisan make:test ExampleTest 
 ```
 
+## Examples of laravel
 
+Here are some examples of projects I have made with laravel:
 
+* [Laravel Dashboard](https://github.com/CMHayden/Laravel-Dashboard)
+
+* [Add product page](https://github.com/CMHayden/management.products.addProduct)
+
+* [Basic passport authentication](https://github.com/CMHayden/laravel-authentication)
+
+* [Products management api - sms subscriber](https://github.com/CMHayden/management.products.api.subscriber.sms)
+
+* [Products management api - email subscriber](https://github.com/CMHayden/management.products.api.subscriber.email)
