@@ -25,9 +25,10 @@ With the CDN you just need to copy and paste this script into your html
 ## Useful Links
 
 The best resource I have found for bootstrap are:
-*[D3 Examples](https://github.com/d3/d3/wiki/Gallery) - shows examples of what can be built with D3.
 
-*[D3 Documentation](https://github.com/d3/d3/wiki) - documentation from D3 on how to use D3 in your project.
+* [D3 Examples](https://github.com/d3/d3/wiki/Gallery) - shows examples of what can be built with D3.
+
+* [D3 Documentation](https://github.com/d3/d3/wiki) - documentation from D3 on how to use D3 in your project.
 
 ## Current examples in this repo
 * Bar Chart
