@@ -21,7 +21,6 @@ Some of these libraries or frameworks may not be incorporated yet, or may only b
 
 * [Handsontable](https://handsontable.com/) - Handsontable is a JavaScript Spreadsheet Component available for pure JavaScript, React, Angular and Vue. 
 
-
 * [Modernizr](https://modernizr.com/) - Modernizr is a JavaScript library which is designed to detect HTML5 and CSS3 features in various browsers, which lets JavaScript avoid using unimplemented features or use a workaround such as a shim to emulate them. Modernizr aims to provide this feature detection in a complete and standardized manner.
 
 * [Parsley](https://parsleyjs.org/) - Validating forms frontend have never been so powerful and easy.
@@ -40,23 +39,25 @@ Some of these libraries or frameworks may not be incorporated yet, or may only b
 
 * [Laravel](https://laravel.com/) - Laravel is a free, open-source PHP web framework, created by Taylor Otwell and intended for the development of web applications following the model–view–controller architectural pattern and based on Symfony.
 
-* [React](https://reactjs.org/) - React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
-
-* [WordPress](https://wordpress.org/) - Open source software which you can use to easily create a beautiful website, blog, or app.
-
 * [Node Js](https://nodejs.org) - Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.
+
+* [React](https://reactjs.org/) - React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
 
 * [Vue](https://vuejs.org/) - Vue.js is an open-source JavaScript framework for building user interfaces and single-page applications.
 
-## Packages & Others
+* [WordPress](https://wordpress.org/) - Open source software which you can use to easily create a beautiful website, blog, or app.
 
-* [GuzzleHTTP](https://github.com/guzzle/guzzle) - Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and trivial to integrate with web services. 
-
-* [Twilio](https://twilio.com/) - Cloud communications platform for building SMS, Voice & Messaging applications on an API built for global scale. 
+## Packages, API's & Others
 
 * [AWS](https://www.aws.amazon.com/) - Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services.
 
+* [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) - The Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport.
+
+* [GuzzleHTTP](https://github.com/guzzle/guzzle) - Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and trivial to integrate with web services. 
+
 * [Mailgun](https://www.mailgun.com/) - Powerful Transactional Email APIs that enable you to send, receive, and track emails, built with developers in mind.
+
+* [Twilio](https://twilio.com/) - Cloud communications platform for building SMS, Voice & Messaging applications on an API built for global scale. 
 
 ---
 
