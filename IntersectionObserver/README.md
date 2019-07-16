@@ -11,3 +11,7 @@ We can use them to watch for when things enter or leave the viewport, and we can
 * Changing nav bar - intersection observer api can be used to change the navigation bar as a user scrolls, be it to change the background color or be it to change the active tab.
 
 * Slide In - intersection observer api can be used to make content slide in when it appears within the viewport. 
+
+## Useful links
+
+The best link I have found for using the intersection observer api is the [mdn web docs](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) for it.
