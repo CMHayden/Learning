@@ -28,6 +28,10 @@ The best resource I have found for gsap has been it's own documentation which ca
 
 ## Examples:
 
-###tweenMax - Landing page
+### tweenMax - Landing page
 
 This is an animated landing page which animates when the button is clicked. The animation used for this is tween max.
+
+### Shop UI
+
+This is an animated landing page designed for a shop. It uses the gsap timeline, the onComplete property, the fromTo property and the reversed property 
