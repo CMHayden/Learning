@@ -7,8 +7,6 @@ The goal of this project is to practice and learn new libraries, frameworks and 
 *Note:
 Some of these libraries or frameworks may not be incorporated yet, or may only be incorporated through links to projects below where I have used them.*
 
----
-
 ## Libraries
 
 * [Bootstrap](https://getbootstrap.com/) - Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation and other interface components. 
@@ -51,6 +49,8 @@ Some of these libraries or frameworks may not be incorporated yet, or may only b
 
 * [AWS](https://www.aws.amazon.com/) - Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services.
 
+* [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) - The Fetch API provides an interface for fetching resources (including across the network).
+
 * [Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) - The Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport.
 
 * [GuzzleHTTP](https://github.com/guzzle/guzzle) - Guzzle is a PHP HTTP client that makes it easy to send HTTP requests and trivial to integrate with web services. 
@@ -62,8 +62,6 @@ Some of these libraries or frameworks may not be incorporated yet, or may only b
 * [RequestBin](https://requestbin.com/) - RequestBin.com gives you a URL that collects requests you send it so you can inspect them in a human-friendly way. Use RequestBin.com to see what your HTTP client is sending or to inspect and debug webhook requests.
 
 * [Twilio](https://twilio.com/) - Cloud communications platform for building SMS, Voice & Messaging applications on an API built for global scale. 
-
----
 
 ## Projects
 
@@ -96,8 +94,6 @@ Work project made to subscribe a URL to a topic on amazons simple notification s
     * AWS SNS
     * Mailgun
     * Guzzle
-
----
 
 ## Contributing
 
