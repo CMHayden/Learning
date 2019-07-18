@@ -67,6 +67,11 @@ Some of these libraries or frameworks may not be incorporated yet, or may only b
 
 Here are links to some larger projects I have done with some of these technologies (if the project link isn't working, the project may be private while working on it, but will be made public once finished):
 
+* [Datastructures and Algorithms](https://github.com/CMHayden/Datastructures-and-algorithms)
+Project made to learn and practice different data structures and algorithms. This is a constantly evolving project as I learn new languages, algorithms and data structures. The idea for this project came from a university course called datastructures and algorithms in second year of university at Heriot Watt. The current languages used are:
+    * Java
+    * C++
+
 * [Dashboard](https://github.com/CMHayden/Laravel-Dashboard)
 Simple dashboard made to practice vue. The idea behind doing a dashboard was because at work I see lot's of dashboards in the management software. I though how these are made? And went away to give it a shot. The data used was created by faker.The technologies used were:
     * Laravel
