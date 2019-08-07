@@ -8,6 +8,8 @@ body {
   display: grid;
   place-items: center;
   font-family: 'Nunito';
+  -webkit-transition: background-color, color 1s;
+  transition: background-color, color 1s;
 }
 
 .container {
@@ -19,5 +21,17 @@ body {
 
 .container h1 {
   margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  h1:after {
+    content: "Dark";
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  h1:after {
+    content: "Light";
+  }
 }
 /*# sourceMappingURL=main.css.map */
