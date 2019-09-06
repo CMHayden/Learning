@@ -24,6 +24,4 @@ You can also access this by using the following media query in your normal css:
 
 ## Use cases
 
-The best time to use bootstrap is for quickly prototyping the front end of an application. By this I mean to make a front end just to be able to add functionality or a backend to it. It is possible to fully customize bootstrap and make it your own though.
-
-Bootstrap grid is also a great way of making a responsive design and I would highly recommend it.
+The best use I have found for this has been to automatically switch between a dark and light theme based on users preference.
