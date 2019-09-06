@@ -59,6 +59,8 @@ Some of these libraries or frameworks may not be incorporated yet, or may only b
 
 * [Papertrail](https://papertrailapp.com) - Papertrail™ provides lightning-fast log management tools for search, live tail, flexible system groups, team-wide access, and integration with popular communications platforms like PagerDuty and Slack to help you quickly track down customer problems, debug app requests, or troubleshoot slow database queries.
 
+* [Prefers-Color-Scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) - The prefers-color-scheme CSS media feature is used to detect if the user has requested the system use a light or dark color theme.
+
 * [RequestBin](https://requestbin.com/) - RequestBin.com gives you a URL that collects requests you send it so you can inspect them in a human-friendly way. Use RequestBin.com to see what your HTTP client is sending or to inspect and debug webhook requests.
 
 * [Twilio](https://twilio.com/) - Cloud communications platform for building SMS, Voice & Messaging applications on an API built for global scale. 
