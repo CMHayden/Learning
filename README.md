@@ -81,6 +81,12 @@ Simple dashboard made to practice vue. The idea behind doing a dashboard was bec
     * Axios
     * Chartisan
     * Faker
+    
+* [Django Voting App]https://github.com/CMHayden/Django-VotingApp)
+Simple voting app made to learn Django. The idea behind this project was curiosity as to how websites such as strawpoll work, and attempting to re-create a simple version of it.The technologies used were:
+    * Django
+    * Bootstrap
+    * SQLite
 
 * [Flask Guestbook](https://github.com/CMHayden/flask-guestbook)
 Short flask project I did to see what flask was about. I heard of flask on a podcast and I knew python could be used for web development, but I had never tried. So I came up with the idea of making a guest book. The technologies used were:
