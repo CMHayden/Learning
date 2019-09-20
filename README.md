@@ -82,7 +82,7 @@ Simple dashboard made to practice vue. The idea behind doing a dashboard was bec
     * Chartisan
     * Faker
     
-* [Django Voting App]https://github.com/CMHayden/Django-VotingApp)
+* [Django Voting App](https://github.com/CMHayden/Django-VotingApp)
 Simple voting app made to learn Django. The idea behind this project was curiosity as to how websites such as strawpoll work, and attempting to re-create a simple version of it.The technologies used were:
     * Django
     * Bootstrap
