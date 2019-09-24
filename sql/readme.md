@@ -120,5 +120,71 @@ Modify column
     MODIFY COLUMN column_name datatype;
 ```
 
+## Constraints
+Constraints are used to restrict data input to a table. Constraints get checked whenever data is being inserted and rejects the data if it violates specified rules. Some of the most common constraints are:
 
+### NOT NULL
+Will never accept empty or null values.
 
+```SQL
+    ALTER TABLE table_name
+    MODIFY COLUMN column_name datatype NOT NULL;
+```
+
+### UNIQUE
+Will never accept repeated values.
+
+```SQL
+    ALTER TABLE table_name
+    MODIFY COLUMN column_name datatype UNIQUE;
+```
+
+### PRIMARY KEY
+Primary key is used to uniquely identify each row in a table. It is a combination between NOT NULL and UNIQUE.
+
+```SQL
+    CREATE TABLE table_name (
+        some_id int NOT NULL,
+        PRIMARY KEY (some_id)
+    );
+```
+
+## FOREIGN KEY
+Foreign key is used when we want to link two tables. It is used on a field which is a primary key in another table.
+
+```SQL
+    CREATE TABLE users (
+        user_id int NOT NULL,
+        name varchar(20) NOT NULL,
+        PRIMARY KEY (user_id)
+    );
+
+    CREATE TABLE some_table (
+        some_id int NOT NULL,
+        user_id int NOT NULL,
+        some_text varchar(20),
+        PRIMARY KEY (some_id),
+        FOREIGN KEY (user_id),
+        REFERENCES users(user_id)
+    );
+```
+
+## DEFAULT
+Default is used to automatically insert default values if the inserted value is null.
+
+```SQL
+    CREATE TABLE table_name (
+        some_id int NOT NULL,
+        some_text varchar(20) DEFAULT 'This was empty'
+    );
+```
+
+## AUTO_INCREMENT
+Auto increment is used to apply an increasing number to a record. Mostly used for IDs.
+
+```SQL
+    CREATE TABLE table_name (
+        some_id int NOT NULL AUTO_INCREMENT,
+        some_text varchar(20)
+    );
+```
