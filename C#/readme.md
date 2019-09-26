@@ -8,51 +8,54 @@ Variables stand for the value of that type. They can be signed or unsigned. Sign
 * Integers:
 They can be signed or unsigned:
 
-** Signed:
+    * Signed:
 
-```C#
-    sbyte variableName = -4;
-    int variableName = -4;
-    short variableName = -4;
-    long variableName = -4;
-```
+    ```C#
+        sbyte variableName = -4;
+        int variableName = -4;
+        short variableName = -4;
+        long variableName = -4;
+    ```
 
-** Unsigned:
+    * Unsigned:
 
-```C#
-    byte variableName = 4;
-    uint variableName = 4;
-    ushort variableName = 4;
-    ulong variableName = 4;
-```
+    ```C#
+        byte variableName = 4;
+        uint variableName = 4;
+        ushort variableName = 4;
+        ulong variableName = 4;
+    ```
 
-** Floating point: 
+    * Floating point: 
 
-```C#
-    float variableName = 34.87f; // The f suffix states this is a float.
-    double variableName = 10.5;
-```
+    ```C#
+        float variableName = 34.87f; // The f suffix states this is a float.
+        double variableName = 10.5;
+    ```
 
-** Decimal types:
-Appropriate for storing monetary data. Provides greater precision. 
+    * Decimal types:
 
-```C#
-    decimal variableName = 44444444.94M; // The M suffix states this is a monetary value.
-```
+    Appropriate for storing monetary data. Provides greater precision. 
 
-** Bolean variables:
-Used for stating true or false
+    ```C#
+        decimal variableName = 44444444.94M; // The M suffix states this is a monetary value.
+    ```
 
-```C#
-    bool variableName = true;
-```
+    * Bolean variables:
 
-** Type Table:
-| Type                      | Size (in bits)    | Range                                             |
-| ------------------------- | ----------------- | ------------------------------------------------- | 
-| sbyte                     | 8                 | -128 to 127                                       |
-| byte                      | 8                 | 0 to 255                                          |
-| short                     | 16                | -32768 to 32767                                   |
-| ushort                    | 16                | 0 to 65535                                        |
-| int                       | 32                | -2147483648 to 21747483647                        |
-| uint                      | 32                | 0 to 4294967295                                   |
+    Used for stating true or false
+
+    ```C#
+        bool variableName = true;
+    ```
+
+    * Type Table:
+
+    | Type                      | Size (in bits)    | Range                                             |
+    | ------------------------- | ----------------- | ------------------------------------------------- | 
+    | sbyte                     | 8                 | -128 to 127                                       |
+    | byte                      | 8                 | 0 to 255                                          |
+    | short                     | 16                | -32768 to 32767                                   |
+    | ushort                    | 16                | 0 to 65535                                        |
+    | int                       | 32                | -2147483648 to 21747483647                        |
+    | uint                      | 32                | 0 to 4294967295                                   |
