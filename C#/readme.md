@@ -7,7 +7,7 @@ C# is an elegant and type-safe object-oriented language that enables developers 
 Variables stand for the value of that type. They can be signed or unsigned. Signed types can hold a negative or positive value, whereas unsigned types can only hold positive values. The value types in C# are:
 * Integers:
 
-They can be signed or unsigned:
+    They can be signed or unsigned:
 
     * Signed:
 
