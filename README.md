@@ -7,6 +7,12 @@ The goal of this project is to practice and learn new libraries, frameworks and 
 *Note:
 Some of these libraries or frameworks may not be incorporated yet, or may only be incorporated through links to projects below where I have used them.*
 
+## Languages
+
+* [C#](https://docs.microsoft.com/en-us/dotnet/csharp/) - C# is a general-purpose, multi-paradigm programming language encompassing strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented, and component-oriented programming disciplines.
+
+* [SQL](https://www.mysql.com/) - SQL is a domain-specific language used in programming and designed for managing data held in a relational database management system, or for stream processing in a relational data stream management system. The link is to MySql, one of the better known RDBMS which uses SQL.
+
 ## Libraries
 
 * [Bootstrap](https://getbootstrap.com/) - Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation and other interface components. 
