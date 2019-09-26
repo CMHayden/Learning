@@ -6,6 +6,7 @@ C# is an elegant and type-safe object-oriented language that enables developers 
 ### Value Types
 Variables stand for the value of that type. They can be signed or unsigned. Signed types can hold a negative or positive value, whereas unsigned types can only hold positive values. The value types in C# are:
 * Integers:
+
 They can be signed or unsigned:
 
     * Signed:
@@ -26,36 +27,36 @@ They can be signed or unsigned:
         ulong variableName = 4;
     ```
 
-    * Floating point: 
+* Floating point: 
 
-    ```C#
-        float variableName = 34.87f; // The f suffix states this is a float.
-        double variableName = 10.5;
-    ```
+```C#
+    float variableName = 34.87f; // The f suffix states this is a float.
+    double variableName = 10.5;
+```
 
-    * Decimal types:
+* Decimal types:
 
-    Appropriate for storing monetary data. Provides greater precision. 
+Appropriate for storing monetary data. Provides greater precision. 
 
-    ```C#
-        decimal variableName = 44444444.94M; // The M suffix states this is a monetary value.
-    ```
+```C#
+    decimal variableName = 44444444.94M; // The M suffix states this is a monetary value.
+```
 
-    * Bolean variables:
+* Bolean variables:
 
-    Used for stating true or false
+Used for stating true or false
 
-    ```C#
-        bool variableName = true;
-    ```
+```C#
+    bool variableName = true;
+```
 
-    * Type Table:
+#### Type Table:
 
-    | Type                      | Size (in bits)    | Range                                             |
-    | ------------------------- | ----------------- | ------------------------------------------------- | 
-    | sbyte                     | 8                 | -128 to 127                                       |
-    | byte                      | 8                 | 0 to 255                                          |
-    | short                     | 16                | -32768 to 32767                                   |
-    | ushort                    | 16                | 0 to 65535                                        |
-    | int                       | 32                | -2147483648 to 21747483647                        |
-    | uint                      | 32                | 0 to 4294967295                                   |
+| Type                      | Size (in bits)    | Range                                             |
+| ------------------------- | ----------------- | ------------------------------------------------- | 
+| sbyte                     | 8                 | -128 to 127                                       |
+| byte                      | 8                 | 0 to 255                                          |
+| short                     | 16                | -32768 to 32767                                   |
+| ushort                    | 16                | 0 to 65535                                        |
+| int                       | 32                | -2147483648 to 21747483647                        |
+| uint                      | 32                | 0 to 4294967295                                   |
