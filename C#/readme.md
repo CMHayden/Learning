@@ -124,3 +124,125 @@ enum listName {item1=1, item2, item3};
 | Can implement one or more interfaces            | Can implement one or more interfaces              |
 | Can initialize fields with initializers         | Can't initialize fields with initializers         |
 | Can have a parameterless constructor            | Can't have a parameterless constructor            |
+
+### Reference Type
+
+A variable of reference type contains a reference to a memory location where data is stored (such as a pointer). They have some properties:
+
+* Direct inheritance from Object.
+* Can implement many interfaces.
+* Two predefined reference types in C#:
+    * String
+    ```C#
+    string variableName =  "data";
+    ```
+
+    * Object: it is the root of all types.
+
+#### Boxing and Unboxing
+
+Boxing is the conversion of a value type to a reference type. Unboxing is the opposite, it converts from reference type to value type. Using boxing, an integer value can be converted to an object to be passed to a method that takes an object as an argument.
+
+```C#
+int n = 5;
+object nObject = n;       //boxing
+int n2 = (int) nObject;   //unboxing
+```
+
+#### Casting
+
+There are two ways of changing the type of a value:
+
+* Implicit conversion by assignment
+
+```C#
+short myShort = 5;
+int myInt = myShort;
+```
+
+* Explicit conversion using the syntax (type)expression
+
+```C#
+double myDouble = 5.4;
+int myInt = (int)myDouble;
+```
+
+#### Nullable Types
+
+Variables of reference type can have the value null if they don't refer to anything. Variables of value type can't have the value null because they represent values. Sometimes it is useful to have a variable of value type that may have no value, to this end, a nullable type can be used:
+
+```C#
+int? i; // i is of type int but may have the value null
+```
+
+#### Arrays
+
+C# supports one dimensional, multi dimensional and jagged arrays.
+
+* One-dimensional arrays:
+    * Are declared like this:
+    ```C#
+    string[] names = new string [30];
+    ```
+
+    * Starts at index 0 up to (in the example above) index 29 (length - 1).
+    
+    * Are accessed like this:
+    ```C#
+    names[2] = "John";
+    ```
+
+* Multi-dimensional array:
+    ```C#
+    int[,] numbers = new int [5,10];
+    ```
+
+* Jagged array:
+
+    It is a multi-dimensional array where the rows may have different sizes.
+
+    * It is declared like this:
+     ```C#
+    int[][] myJaggedArray = new int [4][];
+    ```
+
+    * The rows are filled in separately
+    ```C#
+    myJaggedArray[0] = new int [5];
+    ```
+
+    * Access to array elements work like this:
+    ```C#
+    myJaggedArray[0][2];
+    ```
+
+C# offers some methods to be used on arrays such as:
+
+* Length: gives the number of elements in an array.
+
+* Rank: gives the number of dimensions in the array.
+
+* GetLength(n): gives the number of elements in the n-th dimension.
+
+### Control Structures
+
+#### Logical Operators
+
+For comparing values, these operators exist:
+
+```C#
+a == b; // a is equal to b
+a != b; // a is not equal to b
+a <= b; // a is smaller or equal to b
+a >= b; // a is larger or equal to b
+a < b;  // a is smaller than b
+a > b;  // a is larger than b
+```
+
+A conditional expression is written like this:
+
+```C#
+boolean_expr ? expr_true : expr_false
+```
+
+#### Conditional
