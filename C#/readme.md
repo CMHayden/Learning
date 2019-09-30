@@ -246,3 +246,84 @@ boolean_expr ? expr_true : expr_false
 ```
 
 #### Conditional
+
+In C# if statements can have an else condition or an if-else statemnt. In an if statement, the expression must evaluate to a bool value. If the expression is true, control is passed to a statement, if not, it is passed to the second statement (if an else statement is present).
+
+```C#
+if (name = "Callum") {
+    Console.write("Hello Callum");
+} else {
+    Console.Write("Hello stranger");
+}
+```
+
+#### Switch
+
+In C# switch statements have an expression which **must** be of type: *byte*, *byte*, *short*, *ushort*, *int*, *uint*, *long*, *ulong*, *char* or *string*. Each case must include a jump-statement (also known as a break statement) apart from the last case in the switch. Case clauses can be combined by writing them directly one after the other.
+
+```C#
+int caseSwitch = 1;
+
+switch (caseSwitch) {
+    case 1:
+        Console.WriteLine("Case 1");
+        break;
+
+    case 2:
+        Console.WriteLine("Case 2");
+        break;
+
+    default:
+        Console.WriteLine("Default case");
+        break;
+}
+```
+
+#### While
+
+In a while statement, the boolean expression is evaluated before the statement is executed. This means it is possible for it to never reach the statement.
+
+```C#
+int i = 0;
+while (i <= 3) { // Output: 0, 1, 2, 3
+    Console.WriteLine(i);
+    i++
+}
+```
+
+#### Do While
+
+In a do while statement, the boolean expression is evaluated after the statement is executed. This means it will always execute at least once.
+
+```C#
+int i = 0;
+do { // Output: 0
+    Console.WriteLine(i);
+    i++
+} while (i == 9)
+```
+
+#### For Loop
+
+In a form loop, the initialization of the variable (in the example below it is *i*) is done before the first iteration. It iterates while the boolean_expression remains true. It performs step at the end of each iteration.
+
+```C#
+for (int i = 0; i<3; i++) {
+    Console.Write(i); // Output: 0, 1, 2
+}
+```
+
+#### For Each Loop
+
+The foreach statement iterates over arrays and collections. The variable identifier is bound to each element in turn.
+
+```C#
+var fibNumbers = new List<int> { 0, 1, 1, 2, 3, 5, 8, 13 };
+int count = 0;
+foreach (int element in fibNumbers)
+{
+    count++;
+    Console.WriteLine($"Element #{count}: {element}");
+}
+Console.WriteLine($"Number of elements: {count}");
+```
