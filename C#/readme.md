@@ -1,6 +1,149 @@
 # C#
 C# is an elegant and type-safe object-oriented language that enables developers to build a variety of secure and robust applications that run on the .NET Framework. You can use C# to create Windows client applications, XML Web services, distributed components, client-server applications, database applications, and much, much more. Visual C# provides an advanced code editor, convenient user interface designers, integrated debugger, and many other tools to make it easier to develop applications based on the C# language and the .NET Framework.
 
+It is a simple, modern, general purpose, object-oriented language.
+
+It has support for strong type checking, array bounds checking, checks for uninitialised variables and automatic garbage collection. The software components are suitable for deployment in distributed environments, for applications both for hosted and embedded systems. It has support for low-level C-style programming.
+
+C# was developed out of C and C++.
+ 
+ ## Features
+
+ Many of the features were picked up from Java, C++ and others. Features taken from languages are:
+
+* From C++:
+    * Pointer operations (unsafe coding)
+    * Operator overloading
+    * Preprocessor directives
+    * Structs, enums, and many others
+
+* From Java:
+    * Class structure
+    * Single inheritance
+    * Inheritance
+    * Garbage collection
+    * Code safety
+    * Stricter typing
+    * Removal of global types
+
+* Other features:
+    * Properties
+    * Indexes
+    * Attributes
+    * Delegates
+    * Events
+
+### Comparison with java
+
+| Feature           | Java                         | C#                                                 |
+| ----------------- | ---------------------------- | -------------------------------------------------- | 
+| Portability       | High (based on portable JVM) | Low                                                |
+| Simplicity        | Simple and easy to learn     | More difficult to learn, with convenience features |
+| Intermediate Code | JVM bytecode                 | IL in .Net assemblies                              |
+
+### Differences to Java
+
+The filename can be different to the class name. A file can contain several public classes and interfaces. Each of the classes can have its own Main function. To denote the starting point of execution, the main class has to be specified on the command line.
+
+```
+csc Hello.cs /main:Class1
+```
+
+To compile into a library instead of a standalone executable, call csc like this:
+
+```
+csc /target:library Hello.cs
+```
+
+## C# Program - Explained
+
+Here is an example of a hello world program in C#:
+
+```C#
+using System;
+namespace HelloWorld
+{
+    class Hello
+        {
+        static void Main()
+            {
+                System.Console.WriteLine("Hello World!");
+            }
+        }
+} 
+```
+
+### using System
+
+The "using" command allows us to specify which libraries namespaces we want access to. It is similar to Java's import. The "System" library contains the namespaces for all common .Net variables such as System.Int32 amongst other things. The System namespace also contains core classes including the Console class.
+
+### namespace HelloWorld
+
+Defines a new namespace called HelloWorld. Namespaces seperate code into individually named containers and avoids the danger of having duplicate variable names within the scope of a block.
+
+### class Hello
+
+Defines a class named Hello in the namespace. Just like in Java or C++, C# uses classes to facilitate it's object-oriented design methodology. Classes allow us to create individual self-contained units of code which can be instantiated throughout our application. All C# applications must contain at least one class.
+
+### static void Main()
+
+All C# applications must have a Main() function, which is the entry point for execution of the application. In contrast to Java, Main() can be declared without arguments. The Main() function dis declared public by default. Main can return either an integer or nothing with void. Main can take an array of strings as command line arguments, and can return an int value as return code.
+
+### System.Console.WriteLine("Hello World!")
+
+A call to the WriteLine() function of the console class. It displays "Hello World!" upon compiling and executing.
+
+## Microsoft .Net
+
+Microsfot .Net is Microsoft's Internet strategy. It was originally called NGWS (next generation windows services). It is an internet and web based infrastructure that will run in any browser. .Net and Java/JVM are modern, powerful programming techniques and are equal competitors.
+
+### .Net vs JVM
+
+Java is a programming language which runs on many platforms so uses a common language (Java) which gets compiled and run on different platforms. .Net takes a different approach. It allows you to use any language (VB.Net, C#, F#) but has compilers for different languages that generate a platform specific code.
+
+### Advantages and Disadvantages
+
+* With .Net you are not stuck to one language. A multi-language solution is easier to provide than one with only Java.
+
+* .Net isn't as portable as Java. You can't use it to compile an executable that will run on Linux or Solaris in addition to Windows, while you can with Java.
+
+### Suitability of .Net
+
+Java can be used to write programs for many operating systems, and .Net can be used to make any programming language into a Windows program. .Net is suitable for professionals who want to develop an application for windows easier than using Java for the same.
+
+### The .Net Framework
+
+The .Net framework is an environment for building, deploying, and running web services and web applications. The main components are:
+
+#### Common Language Specification (CLS)
+
+The CLS Defines a set of language features such as how methods and constructors are called. It allows .Net appplications to fully interact with other objects, regardless of the language in which they were implemented.
+
+In an object oriented environment such as C# and the .Net platform everything is an object, so once created, it needs to be able to communicate or interact with other objects. These other objects may be in a different language such, but this problem is overcome by implementing the Common Type System. The CTS means every .Net language uses the same data types (or objects). Due to this, when you pass parameters between languages, there is no longer a requirement to convert data types.
+
+#### Common Type System (CTS)
+
+The common type system defines how types are declared, used, and managed in CLR. It specified a set of types that any programming language in CLR should implement. There are two type categories, value types (variables stand for the value of that type) and reference types (contains a reference to a memory location where data is stored). Languages also defines aliases, for example, CTS defines System.Int32 which C# aliases as int.
+
+#### Common Language Runtime (CLR)
+
+The common language runtime is a virtual machine of the .Net framework. It is an implementation of Microsoft's Common Language Infrastructure (CLI) standard. It defines an execution enviornment for program code. It runs a form of bytecode called the Microsoft Intermediate Language (MSIL).
+
+Developers write programs. At compile time, the CLR converts the program into MSIL code. At runtime, the CLR's "just-in-time" compiler converts the MSIL code into native code, suitable for the underlying operating system.
+
+The key tasks for the CLR are:
+
+* Class loading
+* Assembly integrity check
+* Security check
+* Memory type safety check
+* Just-in-time compilation
+* Automatic memory management
+
+#### .Net Framework Class Library (FCL)
+
+The framework class library contains thousands of reusable classes, interfaces and value types which are grouped in namespaces. The fundamental functionality is provided by the Base Class libraries (BCL) which is part of FCL. Some of the common FCL namespaces are System, System.IO, System.Net, and System.Security.
+
 ## Types
 
 ### Value Types
@@ -327,3 +470,42 @@ foreach (int element in fibNumbers)
 }
 Console.WriteLine($"Number of elements: {count}");
 ```
+
+### Functions
+
+Functions, or static methods, encapsulate common sequences of instructions. As an example, this function returns the nth element of an array. The static method is then called directly.
+
+```C#
+static int Get(int[] arr, int n) {
+    return arr[n];
+}
+
+i = Get(myArr, 3);
+```
+
+Functions can take in parameters. All objects, arrays and strings are passed by reference, meaning that changes that affect them is passed to the function, but value types are copied. The keyword *ref* is needed for passing by reference.
+
+```C#
+static void Set (int [] arr , int n , int x ) {
+    arr[n] = x;
+}
+
+static void SetStep (int [] arr , ref int n , int x ){
+    arr[n] = x;
+    n += 1;
+}
+```
+
+---
+
+## Sources of Information
+
+The majority of this document is formed from notes taken from a fourth year course at Heriot Watt called Industrial Programming and taught by Dr Hans Wolfgang Loidl.  Other useful links are:
+
+* [.Net Framework to run C# applications - Download Instructions](https://dotnet.microsoft.com/)
+
+* [C# and .Net tutorials and documentation](https://docs.microsoft.com/en-us/dotnet/welcome)
+
+## Contributing
+
+Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
