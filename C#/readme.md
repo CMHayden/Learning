@@ -496,6 +496,68 @@ static void SetStep (int [] arr , ref int n , int x ){
 }
 ```
 
+## ADO.Net
+
+ADO.Net provides a direct interface for a database. It uses a conventional, shallow embedding of SQL commands into C# as a host language. Meaning SQL commands are composed as strings. To access a database with ADO we use the following steps
+
+### Connect to a Database
+
+To connect to a database a string must specify location, account, password... Here is an example:
+
+```C#
+using MySql.Data.MySqlClient;
+string cstr = "Server=Server;Database=Database;User ID= ID;Password=Password";
+MySqlConnection dbcon;
+
+try {
+    dbcon = new MySqlConnection(cstr);
+    dbcon.Open();
+}catch (MySql.Data.MySqlClient.MySqlException ex){
+    ... }
+```
+
+### Compose an SQL Query
+
+To compose an SQL query we do it as a string. It can be any SQL operation. Depending on the database, SQL extensions might be available. Here is an example:
+
+```C#
+MySqlCommand dbcmd = dbcon.CreateCommand();
+
+string sql = " SELECT A_ID, A_FNAME, A_LNAMe " + " FROM authors ";
+dbcmd.CommandText = sql ;
+```
+
+### Issue Query and Process Response
+
+When we issue our query, we must process the response. This is normally done in a while loop. Here is an example:
+
+```C#
+MySqlDataReader reader = dbcmd.ExecuteReader();
+
+while(reader.Read()) {
+    string FirstName = (string) reader["A_FNAME"];
+    string LastName = (string) reader["A_LNAME"];
+
+    Console.WriteLine("Name: " + FirstName + " " + LastName);
+}
+```
+
+### Clean-up and Disconnect
+
+To finish up, we close the reader and database connection, we dispose of the database command, and we set it all to null.
+
+```C#
+reader.Close();
+reader = null;
+
+dbcmd.Dispose();
+dbcmd = null;
+
+dbcon.Close();
+dbcon = null;
+```
+
+
 ---
 
 ## Sources of Information
