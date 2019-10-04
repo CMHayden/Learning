@@ -557,7 +557,147 @@ dbcon.Close();
 dbcon = null;
 ```
 
+## LINQ
 
+LINQ or Language Integrated Query is a more advanced way to interact with databases. It's a new feature with C# 3.0 onwards. It provides SQL-like commands as language extensions rather than composing SQL queries as strings. This is known as deep embedding.
+
+It can also be used to access other forms of data, such as XML or compound C# data structures. This results in more uniform and succinct code. Using LINQ in this way requires several advanced language features and is an alternative to using standard mechanisms of traversing data structures such as iterators.
+
+To use LINQ to access a database, first classes representing the tables of the database are defined:
+
+```C#
+[Table(name = "authors")]
+public class Authors
+{
+    [Column]
+    public int A_ID {get; set;}
+    [Column]
+    public string A_FNAME {get; set;}
+    [Column]
+    public string A_LNAME {get; set;}
+}
+```
+
+Next a conection is made using a connection string, similar to ADO.Net:
+
+```C#
+DataContext db = new DataContext(
+    "Data Source = .\\MySql;" + "Initial Catalog=test; Integrated Security=True"
+);
+DataContext db = new DataContext(connStr)
+```
+
+The main advantage of LINQ is the simplified way of performing queries. SQL-like commands such as select or from are directly available.
+
+```C#
+Table<Authors> AuthorTable = db.GetTable<Authors>();
+List<Authors> dbQuery = from author in Authors select author;
+
+foreach (var author in dbQuery) {
+    Console.WriteLine("Author: " + author.A_FNAME + " " + author.A_LNAME);
+}
+```
+
+### Querying In Memory Data
+
+Assume we have a list of books:
+
+```C#
+List<Books> booklist = new List<Book> {
+    new Book {
+        Title = "Learning C#",
+        Author = "Jesse Liberty",
+        Publisher = "O'Reilly",
+        Year = 2008
+    },
+    new Book {
+        Title = "Programming C#",
+        Author = "Jesse Liberty",
+        Publisher = "O'Reilly",
+        Year = 2008
+    },
+    new Book {
+        Title = "Programming PHP",
+        Author = "Rasmus Lerdorf, Kevin Tatroe",
+        Publisher = "O'Reilly",
+        Year = 2006
+    }
+};
+```
+
+The normal way to iterate over the list looks like this:
+
+```C#
+foreach (Book b in booklist) {
+    if (b.Author == "Jesse Liberty"){
+        Console.WriteLine(b.Title + " by " + b.Author);
+    }
+}
+```
+
+The LINQ-style iteration looks like an SQL query and is shorter:
+
+```C#
+IEnumerable<Book> resultsAuthor =  // Embedded SQL-like code (LINQ code)
+    from b in booklist
+    where b.Author == "Jesse Liberty"
+    select b;
+
+// Iterate over the results
+foreach(Book r in resultsAuthor) {
+    Console.WriteLine(r.Title + " by " + r.Author);
+}
+```
+
+Unfortunetly, with this solution, we return the entire books data from the query. So instead of just the title and author, we get everything. To avoid this, we can use anonymous types:
+
+```C#
+var resultsAuthor1 = 
+    from b in booklist
+    where b.Author == "Jesse Liberty"
+    select new {b.Title, b.Author}; // Anonymous type
+
+foreach(var r in resultsAuthor1) {
+    Console.WriteLine(r.Title + " by " + r.Author);
+}
+```
+
+This query can be shortened further still by using a lambda expression (anonymous function). This syntax is similar to an arrow function in JavaScript.
+
+```C#
+var resultsAuthor2 = booklist.Where(bookEval => bookEval.Author == "Jesse Liberty");
+
+foreach(var r in resultsAuthor2) {
+    Console.WriteLine(r.Title + " by " + r.Author);
+}
+```
+
+We can also use other SQL Like commands such as sorting the result:
+
+```C#
+var resultsAuthor3 = 
+    from b in booklist
+    orderby b.Author
+    select new {b.Title, b.Author};
+
+foreach(var r in resultsAuthor3){
+    Console.WriteLine(r.Title + " by " + r.Author);
+}
+```
+
+or joining tables:
+
+```C#
+var resultList4 = 
+    from b in booklist
+    join p in puchaselist on b.Title equals p.Title
+    where p.Quantity >=2
+    select new {b.Title, b.Author, p.Quantity};
+
+foreach (var r in resultList4) {
+    Console.WriteLine(r.Quantity + " items of " + r.Title + " by " + r.Author);
+}
+```
 ---
 
 ## Sources of Information
