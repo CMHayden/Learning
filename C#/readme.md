@@ -1,4 +1,17 @@
 # C#
+
+## Table of Contents
+
+* [Features](https://github.com/CMHayden/Learning/tree/master/C%23#features)
+* [C# Program Explained](https://github.com/CMHayden/Learning/tree/master/C%23#c-program---explained)
+* [Microsoft .Net](https://github.com/CMHayden/Learning/tree/master/C%23#microsoft-net)
+* [Types](https://github.com/CMHayden/Learning/tree/master/C%23#types)
+* [Control Structures](https://github.com/CMHayden/Learning/tree/master/C%23#control-structures)
+* [ADO.Net](https://github.com/CMHayden/Learning/tree/master/C%23#adonet)
+* [LINQ](https://github.com/CMHayden/Learning/tree/master/C%23#linq)
+* [References](https://github.com/CMHayden/Learning/tree/master/C%23#sources-of-information)
+* [Contributing](https://github.com/CMHayden/Learning/tree/master/C%23#contributing)
+
 C# is an elegant and type-safe object-oriented language that enables developers to build a variety of secure and robust applications that run on the .NET Framework. You can use C# to create Windows client applications, XML Web services, distributed components, client-server applications, database applications, and much, much more. Visual C# provides an advanced code editor, convenient user interface designers, integrated debugger, and many other tools to make it easier to develop applications based on the C# language and the .NET Framework.
 
 It is a simple, modern, general purpose, object-oriented language.
@@ -93,6 +106,8 @@ All C# applications must have a Main() function, which is the entry point for ex
 
 A call to the WriteLine() function of the console class. It displays "Hello World!" upon compiling and executing.
 
+---
+
 ## Microsoft .Net
 
 Microsfot .Net is Microsoft's Internet strategy. It was originally called NGWS (next generation windows services). It is an internet and web based infrastructure that will run in any browser. .Net and Java/JVM are modern, powerful programming techniques and are equal competitors.
@@ -143,6 +158,8 @@ The key tasks for the CLR are:
 #### .Net Framework Class Library (FCL)
 
 The framework class library contains thousands of reusable classes, interfaces and value types which are grouped in namespaces. The fundamental functionality is provided by the Base Class libraries (BCL) which is part of FCL. Some of the common FCL namespaces are System, System.IO, System.Net, and System.Security.
+
+---
 
 ## Types
 
@@ -367,9 +384,11 @@ C# offers some methods to be used on arrays such as:
 
 * GetLength(n): gives the number of elements in the n-th dimension.
 
-### Control Structures
+---
 
-#### Logical Operators
+## Control Structures
+
+### Logical Operators
 
 For comparing values, these operators exist:
 
@@ -388,7 +407,7 @@ A conditional expression is written like this:
 boolean_expr ? expr_true : expr_false
 ```
 
-#### Conditional
+### Conditional
 
 In C# if statements can have an else condition or an if-else statemnt. In an if statement, the expression must evaluate to a bool value. If the expression is true, control is passed to a statement, if not, it is passed to the second statement (if an else statement is present).
 
@@ -400,7 +419,7 @@ if (name = "Callum") {
 }
 ```
 
-#### Switch
+### Switch
 
 In C# switch statements have an expression which **must** be of type: *byte*, *byte*, *short*, *ushort*, *int*, *uint*, *long*, *ulong*, *char* or *string*. Each case must include a jump-statement (also known as a break statement) apart from the last case in the switch. Case clauses can be combined by writing them directly one after the other.
 
@@ -422,7 +441,7 @@ switch (caseSwitch) {
 }
 ```
 
-#### While
+### While
 
 In a while statement, the boolean expression is evaluated before the statement is executed. This means it is possible for it to never reach the statement.
 
@@ -434,7 +453,7 @@ while (i <= 3) { // Output: 0, 1, 2, 3
 }
 ```
 
-#### Do While
+### Do While
 
 In a do while statement, the boolean expression is evaluated after the statement is executed. This means it will always execute at least once.
 
@@ -446,7 +465,7 @@ do { // Output: 0
 } while (i == 9)
 ```
 
-#### For Loop
+### For Loop
 
 In a form loop, the initialization of the variable (in the example below it is *i*) is done before the first iteration. It iterates while the boolean_expression remains true. It performs step at the end of each iteration.
 
@@ -456,7 +475,7 @@ for (int i = 0; i<3; i++) {
 }
 ```
 
-#### For Each Loop
+### For Each Loop
 
 The foreach statement iterates over arrays and collections. The variable identifier is bound to each element in turn.
 
@@ -471,7 +490,9 @@ foreach (int element in fibNumbers)
 Console.WriteLine($"Number of elements: {count}");
 ```
 
-### Functions
+---
+
+## Functions
 
 Functions, or static methods, encapsulate common sequences of instructions. As an example, this function returns the nth element of an array. The static method is then called directly.
 
@@ -495,6 +516,8 @@ static void SetStep (int [] arr , ref int n , int x ){
     n += 1;
 }
 ```
+
+---
 
 ## ADO.Net
 
@@ -556,6 +579,8 @@ dbcmd = null;
 dbcon.Close();
 dbcon = null;
 ```
+
+---
 
 ## LINQ
 
