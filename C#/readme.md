@@ -723,6 +723,177 @@ foreach (var r in resultList4) {
     Console.WriteLine(r.Quantity + " items of " + r.Title + " by " + r.Author);
 }
 ```
+
+---
+
+## Advanced Features
+
+Advanced features provide tools of abstraction to generate re-usable code. The enable structured control over collections, adapting language features such as foreach loops to user-defined classes. They enable the abstraction over types through generics and abstraction over methods with delegates, in a similar way to abstracting data through class hierarchies.
+
+Using these features can save a lot of code and programming effort.
+
+### Collections
+
+Collections provide a framework for putting objects of the same type together. Examples are arrays, or pre-defined classes such as Stack, List, Queue, or Dictionary. Constructs are available to iterate over all elements of a collection. A user-defined class can be made a collection by implementing certain interfaces such as IEnumerable or ICollection.
+
+### Indexers
+
+Indexers allow for trating a class as if it were an array. This allows for using the foreach loop on a class. To use an indexer, a get and set method must be defined which are parameterised by an index argument. Read and write uses of the class in array notation are then translated into calls to these get and set methods.
+
+```C#
+public class ListBox {
+    private string[] strings;
+    private int ctr = 0;
+
+    // params keyword allows for passing individual strings which the compiler translates to an array
+    public ListBox(params string[] initStrs){ 
+        // Constructor for ListBox. Takes initStrs and adds to strings[] 
+        strings = new String[256];
+        foreach (string s in initStrs){
+            strings[ctr++] = s;
+        }
+    }
+
+    public void Add(string s) {
+        // Method to add new string to strings[]
+        if(ctr >= strings.Length){
+            // ToDo: handle overflow
+        } else {
+            strings[ctr++] = s;
+        }
+    }
+
+    public string this[int index] {
+        get {
+            if (index<0 || index>=strings.Length) {
+                // handle error case
+            } else {
+                return strings[index];
+            }
+        }
+
+        set {
+            if (index >= ctr) {
+                // handle error case
+            } else {
+                strings[index] = value;
+            }
+        }
+    }
+
+    public int GetNumEntries() {
+        // Returns the length of String
+        return ctr;
+    }
+}
+```
+
+We can now treat LisBox class like an array of strings:
+
+```C#
+// Object lbt is treated like an array
+for (int i = 0; i<lbt.GetNumEntries(); i++) {
+    Console.WriteLine("lbt[{0}]: {1}", i, lbt[i]);
+}
+```
+
+### Generics
+
+Generics offer the possibility to leave the type of an element undefined. For this to be possible, a type-variable is specified. An example is the pre-defined List class:
+
+```C#
+public class List<T> { ... }
+```
+
+*T* is a type-variable. It stands for the element type of the list. The method in the class work over any basis type T meaning they are polymorphic. When using the list you specify the element type:
+
+```C#
+List<int> myList = new List<int>();
+```
+
+Other pre-defined generic classes are:
+
+```C#
+List<T> name = new List<T>();
+Stack<T> name = new Stack<T>();
+Queue<T> name = new Queue<T>();
+Dictionary<K, V> name = new Dictionary<K, V>();
+```
+
+It is possible to restrict the type variable:
+
+```C#
+public class Node<T> where T:IComparable
+```
+
+It can only be instantiated for a type that impements the IComparable interface. Several generic interfaces can be implemented to make iteration over collections simpler. With an implementation of the *IEnumerable<T>* interface it is possible to use a foreach loop on the collection.
+
+```C#
+public class ListBox : IEnumerable<String> {
+    private string[] strings;
+    private int ctr = 0;
+
+    // Enumerator
+    public IEnumerator<string> GetEnumerator() {
+        foreach (string s in strings) {
+            yield return s;
+        }
+        // Required to fulfill IEnumerable
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator(){
+            IEnumerable.GetEnumerator(){
+                throw new NotImplementedException();
+            }
+        }
+    }
+}
+```
+
+Now we can use a foreach loop on a ListBox lbt:
+
+```C#
+foreach(string s in lbt) { // Object lbt is used as a container
+    Console.WriteLine("Value: {0}", s);
+}
+```
+
+### Exceptions
+
+Exceptions provide language constructs to deal with foreseen error cases in the code. For instance, when accessing an array an exception should be thrown if the index is out of range. An exception is an object that has information abotu the error. A handler deals with the error case. The handler can be defined in the method or in any of the calling methods. **NO EXCEPTION SHOULD BE UNHANDLED.**
+
+Here is an example for checking the array bounds of the previous ListBox example
+
+```C#
+public string this[int index] {
+    get {
+        if (index <0 || index>=strings.Length) {
+            throw new OutOfBoundsException();
+        } else {
+            return strings[index];
+        }
+    }
+}
+```
+
+A concrete exception class must inherit from the Exception class:
+
+```C#
+public class OutOfBoundsException : System.Exception {
+    public OutOfBoundsException(string msg) {
+        base(msg);
+    }
+}
+```
+
+An exception is caught by attatching an exception handler to the code:
+
+```C#
+try {
+    x = lbt[i]; //Dangerous code
+} catch (OutOfBoundsException e) {
+    Console.WriteLine("Index out of bounds; msg: {0}", e.Message);
+}
+```
+
 ---
 
 ## Sources of Information
