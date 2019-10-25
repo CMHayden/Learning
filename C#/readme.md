@@ -896,6 +896,43 @@ try {
 
 ---
 
+## Reflection
+
+Reflection is used to get access to concepts in C# that are not normally explicit. It is good for manipulating program constructs. To do this, you need to access the meta-data of a program.
+
+### Implicit Serialisation
+
+The goal with implicit serialisation is to turn the data in an object into a linear form so that it can be written to a disk or trasnferred to another machine. When done implicitly it, it means the system tries to automatically generate the code for it. To achieve implicit serialisation we attach an attribute as meta-data to a class definition:
+
+```C#
+[Serialisable]
+class Student: Person {...}
+```
+
+This will automatically generate a function Serialize() for serialisation before writing an object to file:
+
+*this uses a binary formatter. For compatibility you may want to use SOAP or XML*
+*Soap - System.Runtime.Serialization.Formatters.Soap*
+*Xml - System.Xml.Serialization*
+
+```C#
+IFormatter formatter = new BinaryFormatter();
+Stream streamOut = new FileStream("ThisPerson.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+formatter.Serialize(streamOut, 1);
+streamOut.Close();
+```
+
+The serialized data can then be read from the file like this:
+
+```C#
+IFormatter formatter = new BinaryFormatter();
+Stream streamIn = new FileStream("ThisPerson.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+Student s1 = (Student) formatter.Deserialize(streamIn);
+streamIn.Close();
+```
+
+---
+
 ## Sources of Information
 
 The majority of this document is formed from notes taken from a fourth year course at Heriot Watt called Industrial Programming and taught by Dr Hans Wolfgang Loidl.  Other useful links are:
