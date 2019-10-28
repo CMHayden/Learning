@@ -931,6 +931,10 @@ Student s1 = (Student) formatter.Deserialize(streamIn);
 streamIn.Close();
 ```
 
+### Explicit Serialisation
+
+To w
+
 ---
 
 ## Sources of Information
