@@ -28,6 +28,34 @@ When 3D rendering we use pipelines and do tasks such as modelling transformation
 
 3D graphics have many uses, some of these are for entertainment, scientific visualisations, training, education, computer-aided design, art, e-commerce, tourism, navigation, and augmented reality.
 
+## TL;DR:
+
+* 3D Graphics are simple but computationally expensive.
+* We achieve real-time graphics through various optimisations, cheats, trick, approximation and assumptions.
+* 3D Graphics are well suited for parallel processing.
+* The graphics stages can be summarized as capture, modelling, animation and rendering.
+* ACM SIGGRAPH is the best source for the newest information.
+
 ---
 
+## Drawing and Modelling Fundamentals
+
 There are many types of graphics styles but the concepts for 3D are common to art, 3D art, and 3D graphics. For instance, in 3D graphics we focus on how light reflects and interacts with an object, how they move in the world and how they are scaled and composed. The ideas of light can be seen in art by Michelangelo, the Simoni and the David.
+
+Graphics can be classical or modern. This is a skill that is mastered by practicing a lot. It is not about consumption, but about the creation of things.
+
+All computer art is based in fundamental art concepts such as lines, shapes, volumes, values, and colours. If you want to draw you should master these elements.
+
+Perspective is how we move from 2D to 3D.
+
+In 3D Graphics, cameras handle the projection. They have many settings and values. These settings and values include the aperture, focal length, f stop, and focus distance amongst others.
+
+Drawing/Modelling can be difficult, but it can be mastered. You must be aware of optical illusions such as foreshortening. Foreshortening is an illusion that makes distant objects look smaller in relation to closer objects. We need to think about objects using a 90 degree line of view, this is why there are many views in modelling packages.
+
+Most objects can be created or represented from basic volumes. The more familiar you are with basic volumes the easier it gets. Practicing to draw these will help you compose various sketches. A few of these basic volumes are available in all modelling packages.
+
+### Basic Lighting
+
+The biggest challenge in drawing is to create the illusion of depth and three dimensional form. Just drawing a highlight is ok, but more realistic drawings can be taking into account all aspects of light including reflected bounced lights.
+
+![Image of light on a ball](https://github.com/CMHayden/Learning/tree/master/3D%20Graphics%20and%20Animation/images/light_example_01.png)
