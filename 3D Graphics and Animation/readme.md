@@ -58,4 +58,4 @@ Most objects can be created or represented from basic volumes. The more familiar
 
 The biggest challenge in drawing is to create the illusion of depth and three dimensional form. Just drawing a highlight is ok, but more realistic drawings can be taking into account all aspects of light including reflected bounced lights.
 
-![Image of light on a ball](https://github.com/CMHayden/Learning/tree/master/3D%20Graphics%20and%20Animation/images/light_example_01.png)
+![Image of light on a ball](https://raw.githubusercontent.com/CMHayden/Learning/master/3D%20Graphics%20and%20Animation/images/light_example_01.png)
