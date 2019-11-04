@@ -75,3 +75,15 @@ References aid in modelling by allowing you to add the references to your modell
 * Draw or research the object you want to model first.
 * Practice fundamentals: select, move, rotate, and scale. 
 * Use the reference sheet.
+
+---
+
+## Advanced Modelling
+
+## TL;DR:
+
+* Use references.
+* You can modify and model the geometry.
+* There are many ways to interact with the geometry.
+* Practice with the various materials.
+* Practice rendering.
