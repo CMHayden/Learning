@@ -96,9 +96,49 @@ While this is not an OpenGL course, OpenGL will be used to learn the fundamental
 
 ### OpenGL
 
-OpenGL is a graphics API that compines pipelining and parallelism. OpenGL provides an abstraction layer between the applications and the underlying graphics subsystems (ie, graphics cards).
+OpenGL is a graphics API that compines pipelining and parallelism. OpenGL provides an abstraction layer between the applications and the underlying graphics subsystems (ie, graphics cards). OpenGL uses forward rendering.
 
 ### Pipelines
+
+Pipelines are the foundation of any visualization or rendering engine. It is where the rendering of all 3D objects, light sources, lighting models, textures, cameras, and more happens. Essentially, it is a conceptual model which describes the steps a graphics system needs to perform to render a 3D scene to a 2D screen.
+
+Let's break down a graphics pipeline.
+
+![Overview of graphics pipeline](https://raw.githubusercontent.com/CMHayden/Learning/master/3D%20Graphics%20and%20Animation/images/graphics_pipeline_overview.PNG)
+
+* **Input data**: composed of information such as vertices, attributes, and instructions.
+
+* **Vertex fetch**: provides inputs to the vertex shader.
+
+* **Vertex shader**: responsible for the position of the vertices and passing attributes to the next stages.
+
+* **Tessellation control shader**: determines the level of tessellation that will be sent to the tessellation enginge, and the generation of data that will be sent to the tessellation engine shader that is run after tessellation occurrs. 
+
+* **Tessellation engine**: breaks patches into points, lines or triangles. It produces parameters that are input to the evaluation shader.
+
+* **Tessellation evaluation shader**: transforms the resulting primitives and get them ready for rasterization.
+
+*Tessellation: used to manage datasets of polygons (vertex sets) presenting objects in a scene and divide them into suitable structures for rendering. Data is tessellated into triangles.* 
+
+*Rasterisation: act of taking an image described in a vector graphics format (shapes) and converting it into a raster image (a series of pizels, dots or lines, which, when displayed together, create the image which was represented via shapes)*
+
+* **Geometry shader**: has access to all input vertex information that makes the primitive being processed. They can increase or reduce the data flow and change it too. They also have access to vertices of primitives adjacent to the current one.
+
+* **Clipping**: primitives that lie on the boundary between the inside of the viewing volume and the outside are split into several primitives, such that the entire primitive lies in the volume.
+
+* **Culling**: removes back facing geometry - OpenGL works with right handed coordinates.
+
+* **Rasterization**: determines which fragments are covered by a primitive such as lines or triangles. (OpenGL uses half-space-based triangle rasterisation methods - performed concurrently in parallel).
+
+* **Fragment shader**: determines the colour of each fragment before it is sent to the framebuffer for composition.
+
+* **Scissors tests**: fragments against a defined rectangle.
+
+* **Stencil tests**: compares the stencil buffer with the content.
+
+* **Depth test**: compares the fragment z coordinate against the content of the depth buffer (fragment order).
+
+* **Output display**
 
 #### Forward Rendering
 
@@ -126,10 +166,30 @@ The forward rendering pipeline can render complex geometry using simple lights q
 
 #### Inverse Rendering
 
-Inverse rendering starts from the eye or camera position.
+Inverse rendering starts from the eye or camera position. It is done like this:
+
+```
+For each pixel {
+    sample light and materials
+}
+```
+
+The performance depends on the number of pixels. It works well for complex materials. It produces more realistic, but not real time images.
 
 ## TL;DR:
-
+* Forward Rendering Pipeline:
+    * Simplest and easiest to understand.
+    * Complexity dependent on light sources and geometry.
+    * OpenGL, mobiles, and general applications.
+* Deferred Rendering Pipeline:
+    * Pushes light calculations to the framebuffer.
+    * More advanced and uses more memory bandwidth.
+    * Perfect for scenes with multiple lights.
+* Inverse Rendering Pipeline:
+    * Samples pixels instead of geometry.
+    * Allows for more complex and realistic scenes.
+    * Ray tracing, photon mapping, physically correct rendering.
+    * Not used in real-time graphics.
 * OpenGL provides a good abstraction level for learning 3D computer graphics.
 * Forward rendering is the simplest rendering pipeline and it works best for simpler scenes (ie, mobile applications, technical models or simulations).
 * Deferred rendering is better suited for scenes with a lot of light sources (ie, games).
