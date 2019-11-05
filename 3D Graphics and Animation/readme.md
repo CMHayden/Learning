@@ -195,3 +195,17 @@ The performance depends on the number of pixels. It works well for complex mater
 * Deferred rendering is better suited for scenes with a lot of light sources (ie, games).
 * Inverse rendering works best for offline scenes (ie, movies).
 * We can convert models coordinates to screen locations using a series of transformation matrices.
+
+---
+
+## Graphics and Animation Programming
+
+C++ is used for graphics and games for three main reasons:
+
+* **Speed**: C++'s design goal is performance. Well written code can be exceptionally fast. It allows for the use of assembly language.
+
+* **Flexibility**: It is a multi-paradigm language, allowing for machine code, procedural programming and object oriented programming.
+
+* **Support**: There are many libraries and assets for C++ games programming, such as graphics APIs, 2D, 3D, physichs libraries and engines.
+
+For more information on C++, find [my c++ notes here](https://github.com/CMHayden/Learning/tree/master/C%2B%2B).
