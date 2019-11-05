@@ -108,7 +108,7 @@ Let's break down a graphics pipeline.
 
 * **Input data**: composed of information such as vertices, attributes, and instructions.
 
-* **Vertex fetch**: provides inputs to the vertex shader.
+* **Vertex fetch**: provides inputs to the vertex shader as XYZ coordinates and attributes such as UV coordinates.
 
 * **Vertex shader**: responsible for the position of the vertices and passing attributes to the next stages.
 
@@ -140,7 +140,13 @@ Let's break down a graphics pipeline.
 
 * **Output display**
 
+In the example of a city, in the vertex shader we can manipulate the vertices in our model to create munition holes in the facades of the building. We can use geometry shaders to manipulate the geometric primatives of the buildings to create interesting destruction effects like splintering of corners. Using fragment shader allows us to change the fragments (colours) of the materials, following the example of a city we can render it in a toon shading to resemble it to old cartoons. Finally, the framebuffer can be sent back to the fragment shader to add an effect such as gloom or dusk to our city landscape.
+
 #### Forward Rendering
+
+Forward rendering calculates the final output starting from the objects and light sources in the scene. This type of pipeline calculates the light and material properties for each object and for every light source in the scene. As a result, we can assume the complexity of the rendering by the number of objects and lights in the scene.
+
+The advantages of the forward rendering pipeline are that it can easily and quickly render geometrically complex scenes with simple light sources. It also produces frames that are consistent in quality as the final render depends on the geometry and light sources only. As so, this is the most common method used in real-time applications such as mobile games, online demonstrators, and simulations.
 
 With forward rendering we calculate the graphics from the geometry to the pixels. The perfomance depends on the number of lights. This can be done:
 
@@ -165,6 +171,10 @@ For each light {
 The forward rendering pipeline can render complex geometry using simple lights quite efficiently.
 
 #### Inverse Rendering
+
+Inverse rendering fundamentally calculates samples of every pizel for our final render output. It starts from the camera, eye, or screen view, and it then transverses the geometry of the scene to calculate the final output. This type of pipeline calculates samples of the light and material properties for each pixel. The complexity and efficiency of the pipeline depends mostly on the number of sample and pixels in the output scene.
+
+The advantages of the inverse rendering pipeline are that it can easily calculate complex properties of scenes like caustics, reflections, and refractions that would be otherwise quite difficult to trace using a forward rendering pipeline. The disadvantage of this method is that the number of samples per pixel required to render a frame with consistent quality is unknown; as so, they are better suited for offline rendering (movies) where the frames are only rendered once to obtain the maximum realism or quality.
 
 Inverse rendering starts from the eye or camera position. It is done like this:
 
@@ -252,6 +262,14 @@ glDrawArrays(GL_TRIANGLES, 0, 36);
 ---
 
 ## Instancing
+
+The main advantage of using instancing is that you only need to do one function call instead of looping many times through the draw function. Furthermore, less information gets transmitted between the CPU and GPU saving bandwidth. It is also possible to create different instances by manipulating each instance in the vertex shader.
+
+For example, a forest, instancing would be useful as we can have just one instance of a tree and we can generate a whole forest by instancing it many times. In a complex forest, of say, a few hundred thousand trees, this will reduce the load in the CPU and the bandwidth between the CPU and GPU as we only need to send one tree model.
+
+## Tessellating
+
+The main advantage of tessellating is that it allows users to depict more (LOD) and new information from simple geometry. We can use methods like displacement mapping to improve the realism of our objects. Furthermore, using tellestation allows us to simplify the geometry we need to load, which would result in lower loads in the CPU, bandwidth, and loading times. For example, in a forest scene, we can use a simple model of a tree and tessellate this model different to render a forest were each tree looks different creating a more natural look to our scene. 
 
 ## TL;DR:
 
