@@ -248,3 +248,13 @@ glDrawArrays(GL_TRIANGLES, 0, 36);
 * You can fetch the geometry by using indices (VBO).
 * When using VBO you need to optimise the index to account for multiple attributes.
 * Blender is a powerful modelling tool that can export OBJ files.
+
+---
+
+## Instancing
+
+## TL;DR:
+
+* Instancing allows us to draw similar geometry more efficiently.
+* gl_InstanceID allows us to know which instance of the geometry we are drawing in the vertex shader.
+* GLSL does not include rotation or translation matrices, so we need to implement them on our vertex shader code.
