@@ -87,3 +87,51 @@ References aid in modelling by allowing you to add the references to your modell
 * There are many ways to interact with the geometry.
 * Practice with the various materials.
 * Practice rendering.
+
+---
+
+## Real-time Graphics
+
+While this is not an OpenGL course, OpenGL will be used to learn the fundamental concepts of graphics and animation. Once learnt, it will be easy to move between different tools.
+
+### OpenGL
+
+OpenGL is a graphics API that compines pipelining and parallelism. OpenGL provides an abstraction layer between the applications and the underlying graphics subsystems (ie, graphics cards).
+
+### Pipelines
+
+#### Forward Rendering
+
+With forward rendering we calculate the graphics from the geometry to the pixels. The perfomance depends on the number of lights. This can be done:
+
+```
+For each object{
+    Find all lights affecting object {
+        render all lighting and material
+    }
+}
+```
+
+or
+
+```
+For each light {
+    For each object {
+        add lighting to frame buffer
+    }
+}
+```
+
+The forward rendering pipeline can render complex geometry using simple lights quite efficiently.
+
+#### Inverse Rendering
+
+Inverse rendering starts from the eye or camera position.
+
+## TL;DR:
+
+* OpenGL provides a good abstraction level for learning 3D computer graphics.
+* Forward rendering is the simplest rendering pipeline and it works best for simpler scenes (ie, mobile applications, technical models or simulations).
+* Deferred rendering is better suited for scenes with a lot of light sources (ie, games).
+* Inverse rendering works best for offline scenes (ie, movies).
+* We can convert models coordinates to screen locations using a series of transformation matrices.
