@@ -209,3 +209,42 @@ C++ is used for graphics and games for three main reasons:
 * **Support**: There are many libraries and assets for C++ games programming, such as graphics APIs, 2D, 3D, physichs libraries and engines.
 
 For more information on C++, find [my c++ notes here](https://github.com/CMHayden/Learning/tree/master/C%2B%2B).
+
+---
+
+## Drawing
+
+### Vertex Fetch
+
+The vertex fetch stage is responsible for forming the inputs. Inputs can be:
+
+* Geometry - data, type, etc.
+* Attributes - positions, normal, texture coordinates, colours, materials, etc.
+
+To create the vertex fetch, firstly we must initialise and bind a vertex array object. Once this is done, we generate a buffer, link it to the data, and bind it to the context. It is then passed some attributes (vertices positions), some uniforms on the render function, and draws the vertices. Here is how we do this with OpenGL in C++:
+
+```c++
+glGenVertexArrays(1, &vao);
+glBindVertexArray(vao);
+
+glGenBuffers(1, &buffer);
+glBindBuffer(GL_ARRAY_BUFFER, buffer);
+glBufferData(GL_ARRAY_BUFFER,
+    sizeof(vertex_positions),
+    vertex_positions,
+    GL_STATIC_DRAW);
+
+glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+glEnableVertexAttribArray(0);
+
+glUniformMatrix4fv(mv_location, 1, GL_FALSE, &mv_matrix[0][0]);
+
+glDrawArrays(GL_TRIANGLES, 0, 36);
+```
+
+## TL;DR:
+
+* Fetching geometry using VAO is the fastest.
+* You can fetch the geometry by using indices (VBO).
+* When using VBO you need to optimise the index to account for multiple attributes.
+* Blender is a powerful modelling tool that can export OBJ files.
