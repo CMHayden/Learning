@@ -216,3 +216,15 @@ Mean    :0.5615    Mean :0.4393    Mean :0.1514    Mean :0.9918    Mean :0.2821 
 3rd Qu. :0.6300  3rd Qu.:0.5000  3rd Qu.:0.1750  3rd Qu.:1.2657  3rd Qu.:0.3555  3rd Qu.:12.0
 Max.    :0.7800    Max. :0.6300    Max. :0.5150    Max. :2.8255    Max. :0.8970    Max. :27.0
 ```
+
+## Standard Random Variables
+
+R has functions covering a large range of standard families of random variables, for example Binomial, Uniform, and Normal random variables. In most cases, R uses a standardised nomenclature for the different functions associated with a given family of random variables, using a single letter prefix to the associated name for a random variable family. The prefixes are:
+
+* **d...** for a continous random variable this is the value of the density function, and for a discrete random variable this is the value of the probability mass function. For example, *dnorm(1)* gives the value of the standard normal density *(N(0,1))* at *1 (fx(1)=0.2419707)*. Where as *dbinom(2,10,0.2)* calculates the probability mass function, i.e: *P(x = 2) = 0.3019899* where *X ∼ Bin(10,0.2)*.
+
+* **p...** this calculates the cumulative distribution function for the random variable. For example, *pnorm(02)* calculates *P(X ≤ 0.2) = 0.5692597* where *X ~ N(0,1)*.
+
+* **q...** this calculates the quantile function for a random variable. For example, the quantile at 0.5 is the median of the random variable and the quantile is at 0.75 is the upper quartile. For example *qexp(0.75)* this is the upper quartile for *X ~ Exp(1)* which is *1.386294* or *P(X ≤ 1.386294) = 0.75*.
+
+* **r...** this produces idependent identical distributed samples from the given random variable. For example, *rnorm(10)* produces 10 independent identical samples from a *N(0,1)* distribution.
