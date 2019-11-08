@@ -153,7 +153,14 @@ hist(abalone$V2, main='Histogram of the Abalone Sample Diameters', xlab='Diamete
 
 #### Scatter Plot
 
+Scatter plots are used for exploring the relationship between two parameters, for example, the relationship between the weight of abalone and the length of abalone. With a scatter plot, each sample is represented by a point. To do this we use the *plot()* function.
 
+```R
+abalone <- read.table('abalone.data', sep=',', header=FALSE)
+plot(abalone$V1, abalone$V2, xlab='Length,mm', ylab='Weight,g', main='Weight vs Length')
+```
+
+Note that the first argument of the function is the variable for the x axis and the second is for the y axis. A range of other parameters can be changed from the type of marks representing each point to the colour of the points.
 
 #### Bar Plot
 
