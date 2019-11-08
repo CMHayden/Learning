@@ -126,7 +126,30 @@ stem(abalone_lengths)
 
 #### Histogram
 
+Histogram plots are useful for exploring continous numerical data. In R we use the function *hist()* to plot a histogram.
 
+```R
+abalone <- read.table('abalone.data', sep=',', header=FALSE)
+hist(abalone$V2)
+```
+
+This is using the default settings, but R does allow us to change a number of parameters. For example, you can set the number and width of bins. A histogram with 50 bins can be displayed like so:
+
+```R
+abalone <- read.table('abalone.data', sep=',', header=FALSE)
+hist(abalone$V2, breaks= 50)
+```
+
+The most common parameters we may want to change are the labels and titles used for our plots. These are done with the following function parameters:
+
+* main - for the main title of the plot.
+* xlab - for the x axis label.
+* ylab - for the y axis label.
+
+```R
+abalone <- read.table('abalone.data', sep=',', header=FALSE)
+hist(abalone$V2, main='Histogram of the Abalone Sample Diameters', xlab='Diameter, mm')
+```
 
 #### Scatter Plot
 
