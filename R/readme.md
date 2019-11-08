@@ -228,3 +228,20 @@ R has functions covering a large range of standard families of random variables,
 * **q...** this calculates the quantile function for a random variable. For example, the quantile at 0.5 is the median of the random variable and the quantile is at 0.75 is the upper quartile. For example *qexp(0.75)* this is the upper quartile for *X ~ Exp(1)* which is *1.386294* or *P(X ≤ 1.386294) = 0.75*.
 
 * **r...** this produces idependent identical distributed samples from the given random variable. For example, *rnorm(10)* produces 10 independent identical samples from a *N(0,1)* distribution.
+
+The standard families of random variables we will explore are:
+
+### Binomial Random Variable, .binom
+
+Parameters:
+
+* *n*, the number of trials, referred to as size.
+* *p*, the probability of success, referred to as prob
+
+Example:
+
+```R
+dbinom(3, size=20, prob=0.2)
+```
+
+This calculates the probability *P(X = 3)* for *X ~ Bin(20,0.2)*.
