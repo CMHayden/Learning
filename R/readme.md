@@ -164,7 +164,13 @@ Note that the first argument of the function is the variable for the x axis and 
 
 #### Bar Plot
 
+A bar plot is useful for either discrete data or categorical data. To produce a bar plot there are two steps, initially we have to produce a frequency count from our data of each value using the *table()* function. This is then used by the *barplot()* function to produce the chart.
 
+```R
+abalone <- read.table('abalone.data', sep=',', header=FALSE)
+freq<-table(abalone$V6)
+barplot(freq, xlab='Number of rings')
+```
 
 ### Summary Statistics
 
