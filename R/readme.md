@@ -245,3 +245,17 @@ dbinom(3, size=20, prob=0.2)
 ```
 
 This calculates the probability *P(X = 3)* for *X ~ Bin(20,0.2)*.
+
+### Poisson Random Variable, .pois
+
+Parameters:
+
+* *λ*, the Poisson rate, referred to as lambda.
+
+Example:
+
+```R
+dpois(2, lambda=2.2)
+```
+
+This calculates the probability *P(X = 2)* for *X ~ Poi(2.2)*.
