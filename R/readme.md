@@ -259,3 +259,19 @@ dpois(2, lambda=2.2)
 ```
 
 This calculates the probability *P(X = 2)* for *X ~ Poi(2.2)*.
+
+### Geometric Random Variable, .geom
+
+R parameterises the Geometric by the number of failures to the first success rather than the number of trials to the first success. This is one less than the normal definition.
+
+Parameters:
+
+* *p*, probability of success, referred to as *prob*.
+
+Example:
+
+```R
+pgeom(2, prob = 0.25)
+```
+
+This calculates the probability *P(X ≤ 2)* for *X ~ Geo(0.25)*.
