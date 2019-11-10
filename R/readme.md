@@ -229,6 +229,12 @@ R has functions covering a large range of standard families of random variables,
 
 * **r...** this produces idependent identical distributed samples from the given random variable. For example, *rnorm(10)* produces 10 independent identical samples from a *N(0,1)* distribution.
 
+For help with random variables use command:
+
+```R
+help(Distributions)
+```
+
 The standard families of random variables we will explore are:
 
 ### Binomial Random Variable, .binom
@@ -290,3 +296,17 @@ punif(3.2, min = 0.25, max = 4)
 ```
 
 This calculates the probability *P(X ≤ 3.2)* for *X ∼ U[0.25, 4]*.
+
+### Exponential Random Variable, .exp
+
+Parameters:
+
+* *lambda*, the rate of the exponential density, referred to as *rate* (defaults to 1).
+
+Example:
+
+```R
+pnorm(-1.5, mean = -1, sd = 2)
+```
+
+This calculates the probability *P(X ≤ −1.5)* for *X ∼ N(−1, 4)*.
