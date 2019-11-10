@@ -275,3 +275,18 @@ pgeom(2, prob = 0.25)
 ```
 
 This calculates the probability *P(X ≤ 2)* for *X ~ Geo(0.25)*.
+
+### Continous Uniform Random Variable, .unif
+
+Parameters:
+
+* *a*, the lower boundary of the interval, referred to as *min* (defaults to 0 if not set).
+* *b*, the upper boundary of the interval, referred to as *max* (defaults to 1 if not set).
+
+Example:
+
+```R
+punif(3.2, min = 0.25, max = 4)
+```
+
+This calculates the probability *P(X ≤ 3.2)* for *X ∼ U[0.25, 4]*.
