@@ -150,6 +150,151 @@ In the example above, *d3.selectAll(".myclass")* returns all the elements with t
 
 In the above example, *d3.select("tr")* returns the first matching *<tr>* element. Then the *selectAll("td")* returns all *<td>* elements within the *<tr>* element. The *.style()* then changes their background to yellow. When run, this would show as normal but with "One" and "Two" having a yellow background.
 
+## Manipulating DOM elements
+
+
+
+| Method                        | Description                                                                                        |
+| ----------------------------- | -------------------------------------------------------------------------------------------------- |  
+| *.text("content")*            | Gets or sets the text of the selected element.                                                     | 
+| *.append("element name")*     | Adds an element inside the selected element but just before the end of the selected element.       |
+| *.insert("element name")*     | Inserts a new element in the selected element.                                                     | 
+| *.remove()*                   | Removes the specified element from the DOM.                                                        | 
+| *.html("content")*            | Gets or sets the inner HTML of selected element.                                                   | 
+| *.attr("name", "value")*      | Gets or sets an attribute on the selected element.                                                 | 
+| *.property("name", "value")*  | Gets or sets an attribute on the selected element.                                                 |
+| *.style("name", "value")*     | Gets or sets the style of the selected element.                                                    | 
+| *.classed("css class", bool)* | Gets, adds, or removes a css class from the selection.                                             | 
+| *.append("element name")*     | Returns all matching elements in the HTML document.                                                |  
+
+### text()
+
+```HTML
+<div>
+    </p>
+</div>
+<p></p>
+<script>
+    d3.select("p").text("This is paragraph.")
+</script>
+```
+
+In the above example, the first matching *<p>* tag is selected. *.text("This is a paragraph.")* changes the paragraph within the tag to "This is a paragraph.". If *selectAll()* was used, the same would be done but, however, with all of the *<p>* tags.
+
+### append()
+
+```HTML
+<p>First paragraph</p>
+<p>Second paragraph</p>
+
+<script>
+    d3.select("body").append("p").text("Third paragraph.");
+</script>
+```
+
+In the above example, the body tag is selected. *.append("p")* adds a new *<p>* tag to the body right before the body is closed. Text us then added to this new paragraph by chaining the *.text()* method.
+
+### insert()
+
+```HTML
+<div>
+    <p>First paragraph.</p>
+</div>
+
+<script>
+    d3.select("div").insert("p").text("Second paragraph.");
+</script>
+```
+
+In the above example, the first *<div>* tag is selected. *insert("p")* insterts a new paragraph inside this div, and then text is added using *.text()*.
+
+### remove()
+
+```HTML
+<p>Firstt paragraph</p>
+<p>Second paragraph</p>
+
+<script>
+    d3.select("p").remove();
+</script>
+```
+
+In the above example, *d3.select("p")* returns the *<p>* tag. *.remove()* then removes this tag from the document.
+
+### html()
+
+```HTML
+<p>First paragraph</p>
+<script>
+    d3.select("p").html("<span>This is new inner html.</span>");
+</script>
+```
+
+In the above example, *d3.select("p")* returns the *<p>* tag. *.html("<span>This is new inner html.</span>")* replaces what is inside the *<p>* tag with the new *<span>*.
+
+### attr()
+
+```HTML
+<style>
+    .error {
+        color: red
+    }
+</style>
+<body>
+    <p>Error: This is dummy error.</p>
+    <script>
+        d3.select("p").attr("class","error");
+    </script>
+</body>
+```
+
+In the above example,  *d3.select("p")* returns the *<p>* tag. *.attr("class", "error")* adds a class attribute to the paragraph. The *attr()* method can be used to set any calid attribute to any selected DOM element.
+
+### property()
+
+Some attributes cannot be set with *attr()* such as the checked property of a checkbox. This however can be done with the *property()* method.
+
+```HTML
+<p>D3</label><input type="checkbox" />
+<p>jQuery</label><input type="checkbox" />
+
+<script>
+    d3.select("input").property("checked",true);
+</script>
+```
+
+In the above example, *d3.select("input")* selects the first *<input>* element, and set's it's checked property to true with *.property("checked", true)*
+
+### style()
+
+```HTML
+<p>Error: This is dummy error.</p>
+<script>
+    d3.select("p").style("color", "red")
+</script>
+```
+
+In the above example, *d3.select("p")* returns the *<p>* tag. The colour red is then applied to the paragraph with *.style("color", "red")*.
+
+### classed()
+
+```HTML
+<style>
+    .error {
+        color: red
+    }
+</style>
+<body>
+    <p>This is error.</p>
+
+    <script>
+        d3.select("p").classed('error', true);
+    </script>
+</body>
+```
+
+In the above example, *d3.select("p")* returns the *<p>* tag. We then use the *.classed()* method to set the class *myclass* as a class of this *<p>* tag with *d3.classed('error', true)*.
+
 ---
 
 ## Useful Links
