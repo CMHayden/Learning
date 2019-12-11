@@ -338,6 +338,29 @@ In the above example, *d3.select("p")* returns the *<p>* tag. We then use the *.
 
 ## Method chaining
 
+Chain syntax or method chaining, is the technique used by D3 to pass outputs as inputs to new methods. In D3 methods are chained together using a period. For example:
+
+```JS
+d3.select("body").append("p").text("Hello World!");
+```
+
+The alternative to this would look like so:
+
+```JS
+var bodyElemet = d3.select("body");
+var paragraph = bodyElement.append("p");
+
+paragraph.text("Hello World!");
+```
+
+Using chain syntax is a cleaner and shorter way of writing code with D3. In the previous example, the chaining of methods was all done on one line, however, we can also split this into multiple lines which improves radability like so:
+
+```JS
+d3.select("body")
+  .append("p")
+  .text("Hello World!");
+```
+
 ## Function of data
 
 ## Event handling
