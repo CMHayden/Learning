@@ -318,8 +318,6 @@ The *data()* function is used to join the specified array of data to the selecte
 
 *data()* accepts two types of parameters, an array of values (number of object), or a function of data. 
 
-#### Joining data as an array
-
 ```HTML
 <body>
     <p>Learning D3</p>
@@ -347,6 +345,140 @@ In the above example, we have a *<p>* tag which we want to change with our array
 *.data(myData)* binds the array 'myData' to the selection returned from the previous section. As our selection only has a single paragraph element, *the data()* function will bind the first value from the data array to the *<p>* element.
 
 *.text(function(d, i) { return d; });* adds the data as text to each of our selected elements. Each array value is passed as the first argument *d* to text function. In this scenario, the existing text will be replaced with the first value of the array, 'Hello World'.
+
+```HTML
+<body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <script>
+        var myData = ["P1", "P2", "P3"];
+
+        var p = d3.Select("body")
+                .selectAll("p")
+                .data(myData)
+                .text(function(d, i) {
+                    return d;
+                });
+    </script>
+</body>
+```
+
+In the above example, each *<p>* tag would have an element of the *myData* array as the text of the paragraph.
+
+Sometimes however, we don't know how many paragraph elements we have, hence we don't know how long the array should be. This can be dealt with by using the *enter()* method.
+
+### enter()
+
+The *enter()* method dynamically creates placeholder references corresponding to the number of data values. The output of *enter()* can be fed to *append()* method and *append()* will create DOM elements for which there are no corresponding DOM elements on the page.
+
+```HTML
+<body>
+    <script>
+        var data = [4, 1, 6, 2, 8, 9];
+        var body = d3.select("body")
+                    .selectAll("span")
+                    .data(data)
+                    .enter()
+                    .append("span")
+                    .text(function(d) { return d + " "; });
+    </script>
+</body>
+```
+
+In this example, we take a data array of *4*, *1*, *6*, *2*, *8*, and *9*. We want to create span tags which contain each of these numbers, without originally specifying the span tags. Here is how it works:
+
+*d3.select("body")* selects the HTML body.
+
+*.selectAll("span")* returns an empty array as there are no span elements to select.
+
+*.data(data)* provides the array to the data function. As the array contains six elements, the code after this will run for every element in the array.
+
+*.enter()* checks for *<span>* elements but, as it does not find any, it creates a new span for each element.
+
+*.append("span")* appends the created spans to the body element.
+
+*.text(function(d) { return d + " ";});* adds each of the numbers from the array as text to each of our span selections.
+
+This can be useful in situations such as displaying a matrix with a two dimensional array in a way that is easy to visualize for users. Here is how it is done:
+
+```HTML
+<body>
+    <script>
+        var matrix = [
+                        [1, 2, 3, 4],
+                        [5, 6, 7, 8],
+                        [9, 10, 11, 12],
+                        [13, 14, 15, 16]
+                    ];
+
+        var tr = d3.select("body")
+            .append("table")  // adds <table>
+            .selectAll("tr")  // selects all <tr>
+            .data(matrix)      // joins matrix array 
+            .enter()           // create placeholders for each row in the array
+            .append("tr");// create <tr> in each placeholder
+
+        var td = tr.selectAll("td")
+            .data(function (d) {    // joins inner array of each row
+                console.log(d);
+                return d;
+            })
+            .enter()    // create placeholders for each element in an inner array
+            .append("td") // creates <td> in each placeholder
+            .text(function (d) {
+                console.log(d);
+                return d; // add value of each inner array as a text in <td>
+            });
+    </script>
+</body>
+```
+
+This example, when inside the *.data()* function, each inner array is logged seperately. When inside the *.text()* function however, each element of the inner array is logged seperately, allowing for use of each number on their own.
+
+### exit()
+
+While *enter()* is used to add new reference nodes, exit is used to remove one. With *exit()*, the elements enter an exit phase. This means that all exited elements are stored ready to be removed when the command is given.
+
+```HTML
+<body>
+    <p>Example code</p>
+    <p></p>
+    <p></p>
+
+    <script>
+        var myData = ["Example code that works"];
+
+        var p =   d3.select("body")
+                    .selectAll("p")
+                    .data(myData)
+                    .text(function (d, i) {
+                        return d;
+                    })
+                    .exit()
+                    .remove();
+    </script>
+```
+
+In this example, the HTML has three *<p>* tags but only one element in the array. Due to this, *.exit().remove()* removes the additional *<p>* elements.
+
+### datum()
+
+The *datum()* function is used for static visualization which does not need updates. It binds data directly to an element.
+
+```HTML
+<body>
+    <p>Example</p>
+    <script>
+        d3.select("body")
+          .select("p")
+          .datum(100)
+          .text(function(d, 1){
+              return d;
+          });
+    </script>
+</body>
+```
 
 ## Data loading
 
