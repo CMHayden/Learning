@@ -295,6 +295,75 @@ In the above example, *d3.select("p")* returns the *<p>* tag. The colour red is 
 
 In the above example, *d3.select("p")* returns the *<p>* tag. We then use the *.classed()* method to set the class *myclass* as a class of this *<p>* tag with *d3.classed('error', true)*.
 
+## Method chaining
+
+## Function of data
+
+## Event handling
+
+## Animation
+
+## Data binding
+
+| Method     | Description                                                                              |
+| ---------- | ---------------------------------------------------------------------------------------- |  
+| *data()*   | Joins data to the selected elements.                                                     | 
+| *enter()*  | Creates a selection with placeholder references for missing elements.                    | 
+| *exit()*   | Removes nodes and adds them to the exit section which can be later removed from the DOM  | 
+| *datum()*  | Injects data to the selected element without computing a join.                           | 
+
+### data()
+
+The *data()* function is used to join the specified array of data to the selected DOM elements and return the updated selection. It works with different types of data such as Arrays, CSV, TSV, JSON, and XML amongst others.
+
+*data()* accepts two types of parameters, an array of values (number of object), or a function of data. 
+
+#### Joining data as an array
+
+```HTML
+<body>
+    <p>Learning D3</p>
+    <script>
+
+         var myData = ["Hello World!"];
+     
+         var p = d3.select("body")
+                .selectAll("p")
+                .data(myData)
+                .text(function (d, i) {
+                    return d;
+                });
+     
+    </script>
+</body>>
+```
+
+In the above example, we have a *<p>* tag which we want to change with our array *myData*. In terms of D3, we want to bind myData to the selected paragraph tag. This is how it works:
+
+*d3.select("body")* selects the HTML body element.
+
+*.selectAll("p")* returns the paragraph element.
+
+*.data(myData)* binds the array 'myData' to the selection returned from the previous section. As our selection only has a single paragraph element, *the data()* function will bind the first value from the data array to the *<p>* element.
+
+*.text(function(d, i) { return d; });* adds the data as text to each of our selected elements. Each array value is passed as the first argument *d* to text function. In this scenario, the existing text will be replaced with the first value of the array, 'Hello World'.
+
+## Data loading
+
+## Create SVG elements
+
+## Create SVG chart
+
+## Scales
+
+## Axes
+
+## Bar chart
+
+## Animated bar chart
+
+## Pie chart
+
 ---
 
 ## Useful Links
