@@ -8,6 +8,15 @@ With the massive amount of data being generated today, communicating this inform
 
 D3.js can be found [on github](https://github.com/d3/d3) or [on the D3 website](https://d3js.org).
 
+## Table of contents
+
+* [Features](https://github.com/CMHayden/Learning/tree/master/D3#features)
+* [Advantages](https://github.com/CMHayden/Learning/tree/master/D3#advantages)
+* [Getting started](https://github.com/CMHayden/Learning/tree/master/D3#getting-started)
+* [How to D3](https://github.com/CMHayden/Learning/tree/master/D3#how-to-d3)
+* [Useful links](https://github.com/CMHayden/Learning/tree/master/D3#useful-links)
+* [Current examples in this repo](https://github.com/CMHayden/Learning/tree/master/D3#current-examples-in-this-repo)
+
 ## Features
 
 **Uses Web Standards**: D3 is an extremely powerful visualization tool to create interactive data visualizations. It exploits the modern web standards: SVG, HTML and CSS to create data visualization.
@@ -50,7 +59,7 @@ To get started with D3, you need to include D3.js library into your HTML webpage
 
 ### Direct download
 
-You can directly download D3 [here]() and add it manually to your project.
+You can directly download D3 [here](https://github.com/d3/d3) and add it manually to your project.
 
 ### CDN
 
@@ -63,6 +72,38 @@ With the CDN you just need to copy and paste this script into your html
 ---
 
 # How To D3
+
+## Table of contents
+
+* [Selecting DOM elements](https://github.com/CMHayden/Learning/tree/master/D3#selecting-dom-elements)
+
+* [Manipulating DOM elements](https://github.com/CMHayden/Learning/tree/master/D3#manipulating-dom-elements)
+
+* [Method chaining](https://github.com/CMHayden/Learning/tree/master/D3#method-chaining)
+
+* [Function of data](https://github.com/CMHayden/Learning/tree/master/D3#function-of-data)
+
+* [Event handling](https://github.com/CMHayden/Learning/tree/master/D3#event-handling)
+
+* [Animation](https://github.com/CMHayden/Learning/tree/master/D3#animation)
+
+* [Data binding](https://github.com/CMHayden/Learning/tree/master/D3#data-binding)
+
+* [Data loading](https://github.com/CMHayden/Learning/tree/master/D3#data-loading)
+
+* [Create SVG elements](https://github.com/CMHayden/Learning/tree/master/D3#create-svg-elements)
+
+* [Create SVG chart](https://github.com/CMHayden/Learning/tree/master/D3#create-svg-chart)
+
+* [Scales](https://github.com/CMHayden/Learning/tree/master/D3#scales)
+
+* [Axes](https://github.com/CMHayden/Learning/tree/master/D3#axes)
+
+* [Bar chart](https://github.com/CMHayden/Learning/tree/master/D3#bar-chart)
+
+* [Animated bar chart](https://github.com/CMHayden/Learning/tree/master/D3#animated-bar-chart)
+
+* [Pie chart](https://github.com/CMHayden/Learning/tree/master/D3#pie-chart)
 
 ## Selecting DOM elements
 
@@ -505,6 +546,8 @@ The best resource I have found for D3 are:
 * [D3 Examples](https://github.com/d3/d3/wiki/Gallery) - shows examples of what can be built with D3.
 
 * [D3 Documentation](https://github.com/d3/d3/wiki) - documentation from D3 on how to use D3 in your project.
+
+* [D3 API Documentation](https://github.com/d3/d3/blob/master/API.md) - documentation on how to use the D3 API
 
 ## Current examples in this repo
 * Bar Chart
