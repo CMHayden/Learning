@@ -7,3 +7,10 @@ JS used to only be used in browsers to build interactive websites. Now, you can 
 JS originially only ran in the browser, so all browsers have javascript engines. Node was created with C++ and google chrome's java script engine (V8) to enable embedding javascript outside of a browser. This allows for developing server side solutions. 
 
 ECMA scrippt is a specification of JS. The first version came out in 1997, and since 2015 there has been yearly 
+
+## Debugging
+
+Google chrome dev tools is the best for debugging java script. https://developers.google.com/web/tools/chrome-devtools/javascript
+
+Look into JS debugging on VS code. https://code.visualstudio.com/docs/editor/debugging
+
