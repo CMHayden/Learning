@@ -974,19 +974,19 @@ d3.json("/data/users.json", function(error, data) {
 
 Let's run through the code.
 
-*d3.json("/data/users.json", function(error, data) {})* - A file called *users.json* is loaded with *d3.json*. This then returns a formatted data object and an argument "error".
+**d3.json("/data/users.json", function(error, data) {})** - A file called *users.json* is loaded with *d3.json*. This then returns a formatted data object and an argument "error".
 
-*d3.select("body")* - Once we have the data object, we want to output it to the page, so we select the body element first and passes it on using method chaining.
+**d3.select("body")** - Once we have the data object, we want to output it to the page, so we select the body element first and passes it on using method chaining.
 
-*.selectAll("p")* - In this example we are outputting in paragraph tags, but anything can be used. We need four <p> elements because this is the size of our data. D3 will look for paragraph tags on the page and sends the references to the next method in the chain, but we don't have any :'(.
+**.selectAll("p")** - In this example we are outputting in paragraph tags, but anything can be used. We need four <p> elements because this is the size of our data. D3 will look for paragraph tags on the page and sends the references to the next method in the chain, but we don't have any :'(.
 
-*.data(data)* - passes the data values from our dataset to the next method in the chain.
+**.data(data)** - passes the data values from our dataset to the next method in the chain.
 
-*.enter()* - recieves the values from *data()* and as we don't have any references to paragraph elements, it returns empty placeholder references to the new elements.
+**.enter()** - recieves the values from *data()* and as we don't have any references to paragraph elements, it returns empty placeholder references to the new elements.
 
-*.append("p")* - adds paragraph elements to the DOM for our elements.
+**.append("p")** - adds paragraph elements to the DOM for our elements.
 
-*.text(function(d) { return d.name + ", " + d.location; });* - Most D3 functions accept functions as parameters. In this scenario we use an anonymous function that returns a concatenation of name and location from our data object. *text()* is called and binds each concatenation to each of our paragraph elements.
+**.text(function(d) { return d.name + ", " + d.location; });** - Most D3 functions accept functions as parameters. In this scenario we use an anonymous function that returns a concatenation of name and location from our data object. *text()* is called and binds each concatenation to each of our paragraph elements.
 
 ### Error handling
 
