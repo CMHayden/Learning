@@ -363,6 +363,46 @@ d3.select("body")
 
 ## Function of data
 
+In the DOM Manipulation section we spoke about different D3 methods for manipulating DOM elements. These methods can take a constant value or a function as a parameter. This function is called a function of data. With a function of data, the function will be called for each of the data values bound to the DOM. For example:
+
+```JS
+.text(function(d) {
+    return d;
+});
+```
+
+With this function, we can apply any logic to manipulate the data. These functions are anonymous, meaning there's no name associated with it.
+
+Other than the data (d) parameter, there are two other parameters available to us, i (the index element) and this (the current DOM object).
+
+```JS
+.text(function(d, i) {
+    console.log(d);     // the data element
+    console.log(i);     // the index element
+    console.log(this);  // the current DOM object
+
+    return d;
+});
+```
+
+### Dynamic properties
+
+Function of data can be used to add properties or attributes to elements dynamically based on the data or business logic. For example, to colour a paragraph dependent on it's content, this can be done inside the style property function like so:
+
+```JS
+d3.selectAll("p").style("color", function(d, i) {
+    var text = this.innerText;
+
+    if (text.indexOf("Error") >= 0) {
+        return "red";
+    } else if (text.indexOf("Warning") >=0) {
+        return "yellow";
+    }
+})
+```
+
+In this example, all of the *<p>* elements are selected and within the *.style()* method the color is set using a function of data. Inside this function, there's logic which checks if the current *<p>* elements text contains the keywords *"Error"* or *"Warning"*, and setting the paragraph's color to red or yellow depending on this.
+
 ## Event handling
 
 ## Animation
