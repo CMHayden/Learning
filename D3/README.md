@@ -405,6 +405,66 @@ In this example, all of the *<p>* elements are selected and within the *.style()
 
 ## Event handling
 
+D3 supports built-in events and custom events. Event listeners are binded to DOM elements using *d3.selection.on()*.
+
+```JS
+d3.selection.on(type[, listener[, capture]]);
+```
+
+The *on()* method adds an event listener to all selected DOM elements. The first parameter is an event type such as *click* or *mouseover*. The second is a callback function which will be executed when an event occurs and the third option parameter capture flag may be specified ([See here for more information](https://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-registration)). Here is a table of event handling methods and objects:
+
+| Method                    | Description                                                                                                           |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| selection.on()            | Add or remove event listeners to capture event types like click, mouseover, mouseout etc.                             |
+| selection.dispatch()      | Captures event types like click, mouseover, mouseout. Typenames is the eventname, listener is the event listener.     |
+| d3.event                  | Event object to access standard event fields such as timestamp or methods like preventDefault.                        |
+| d3.mouse(container)       | Gets the x and y coordinates of the current mouse position in the specified DOM element.                              |
+| d3.touch()                | Gets the touch coordinates to a container.                                                                            |
+
+Here is an example showing mouseover and mouseout events:
+
+```HTML
+<!doctype html>
+<html>
+<head>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: steelblue;
+            margin: 5px;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <div> </div>
+    <div> </div>
+
+<script>
+    d3.selectAll("div")
+        .on("mouseover", function(){
+            d3.select(this)
+              .style("background-color", "green");
+
+            console.log(d3.event);
+            console.log(d3.mouse(this));
+        })
+        .on("mouseout", function() {
+            d3.select(this)
+              .style("background-color", "steelblue")
+        });
+</script>
+</body>
+</html>
+```
+
+In the above example, we have two div elements and applied a css to each with a steelblue bg colour. We have captured the mouseover and mouseout events of all div elements using *selection.on(event)* and added event listener functions to each captured event. Then we go on to apply styles to each of these.
+
+Note:
+    *console.log(d3.event)* - displays the current event object.
+    *console.log(d3.mouse)* - displays the x and y coordinates of the mouse.
+
 ## Animation
 
 ## Data binding
