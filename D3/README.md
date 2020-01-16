@@ -467,6 +467,111 @@ Note:
 
 ## Animation
 
+D3 simplifies the process of animations with transitions. Transitions are made on DOM selections using *<selection>.transition()* method. The following table lists important methods for animation in D3:
+
+| Method                    | Description                                                           |
+| ------------------------- | --------------------------------------------------------------------- |
+| selection.transition()    | Schedules transition for selected elements.                           |
+| transition.duration()     | Specifies duration of animation for each element in milliseconds.     |
+| transition.ease()         | Specifies the easing function, ie: linear, elastic, bounce...         |
+| transition.delay()        | Specifies the delay in animation for each element in milliseconds.    |
+
+### transition()
+
+The *d3.selection.transition()* method indicates the start of transition and then different transition functions can be applied to selected elements. Here is an example of changing bg colour with animation:
+
+```html
+<!doctype html>
+<html>
+<head>
+<style>
+    #container {
+        height: 100px;
+        width: 100px;
+        background-color: black;
+    }
+</style>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        d3.select("#container")
+          .transition()
+          .duration(1000)
+          .style("background-color", "red");
+    </script>
+</body>
+</html>
+```
+
+In this example, a div element called container is created with a given height, width and bg colour. We then transition the bg colour from black to red. This is done with the *transition()* function which creates the transition on the selected *container* element. We then call the *duration()* function to specify how long the transition should take place, which is 1000 milliseconds in this case.
+
+Transitions can also be created and stored in a variable. It can be used to apply animations to different elements in a visualization. See below for an example.
+
+```JS
+var t = d3.transition()
+        .duration(500)
+
+    d3.select("#container")
+        .transition(t)
+        .style("background-color", "red");
+```
+
+### transition.ease()
+
+The *ease()* function is used to specify and control the motion of the transition. 
+
+To see the types of easing functions, this [easing comparison example](https://bl.ocks.org/d3noob/1ea51d03775b9650e8dfd03474e202fe) is a great resource, but to see all of the easing functions, [check this github repository](https://github.com/d3/d3-ease).
+
+### transition.delay()
+
+The *delay()* function sets the delay parameter for each element in the selection on which the transition is applied. The transition starts after the delay value.
+
+Here is an example where we animate two bars on their height with a linear ease. We start with the first bar and increase it's height from 20px to 100px. Next we animate the second bar the same way. But we will apply a delay of 2000ms of the second bar so that it is animated 2000ms after the first bar. Let's have a look:
+
+```JS
+var svg = d3.select("body")
+        .append("svg")
+        .attr("width", 500)
+        .attr("height", 500);
+
+
+    var bar1 = svg.append("rect")
+        .attr("fill", "blue")
+        .attr("x", 100)
+        .attr("y", 20)
+        .attr("height", 20)
+        .attr("width", 10)
+
+    var bar2 = svg.append("rect")
+        .attr("fill", "blue")
+        .attr("x", 120)
+        .attr("y", 20)
+        .attr("height", 20)
+        .attr("width", 10)
+
+    update();
+
+function update() {
+    bar1.transition()
+        .ease(d3.easeLinear)
+        .duration(2000)
+        .attr("height",100)
+
+    bar2.transition()
+        .ease(d3.easeLinear)
+        .duration(2000)
+        .delay(2000)
+        .attr("height",100)
+}
+```
+
+*var bar1* and *var bar2* add rectangles to SVG. The first is placed at (100, 20) and the second at (120, 20). Both have a height of 20px and width of 10px.
+
+In the update function, we animate the first bar by increasing it's height then give it a linear ease transition for the duration of 2000ms. Then we animate the second bar in the same way but with a 2000ms delay.
+
 ## Data binding
 
 | Method     | Description                                                                              |
