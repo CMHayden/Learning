@@ -751,6 +751,266 @@ The *datum()* function is used for static visualization which does not need upda
 
 ## Data loading
 
+In previous examples, we have used data stored in local variables. In this chapter, we will learn to load data from different types of files and bind it to DOM elements. D3 provides the following methods to load different types of data from external sources:
+
+| Method    | Description                                                                                                                       |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| d3.csv()  | Sends http request to the specified url to load .csv file or data and executes callback function with parsed csv data objects.    |
+| d3.json() | Sends http request to the specified url to load .json file or data and executes callback function with parsed json data objects.  |
+| d3.tsv()  | Sends http request to the specified url to load a .tsv file or data and executes callback function with parsed tsv data objects.  |
+| d3.xml()  | Sends http request to the specified url to load an .xml file or data and executes callback function with parsed xml data objects. |
+
+### d3.csv()
+
+The *d3.csv()* method allows us to load data from a CSV file. It has the following signature:
+
+```JS
+d3.csv(url[, row, callback]);
+```
+
+The first parameter is the url of the .csv file, webapi or webservice which will return CSV data. The second optional parameter is a conversion function which lets us change the representation. The third is a callback function which will be executed once the .csv file or data is loaded. It passes parsed data object as a parameter to a callback function.
+
+This is how it works loading the following CSV data in a file called "employee.csv" found in a projects "data" folder.
+
+**CSV File**
+```CSV
+Name, Age
+John, 30
+Jane, 32
+```
+
+**JavaScript**
+```JS
+d3.csv("/data/employees.csv", function(data) {
+    for(var i = 0; i < data.length; i++) {
+        console.log(data[i].Name);
+        console.log(data[i].Age);
+    }
+});
+```
+
+In the abovce example, the *d3.csv()* method takes a file name as input, processes the file and loads the data into an array of objects. The first row of the CSV file is treated as column name and the rest of the rows are considered as data. The data object loaded by d3 uses the column names as the object's properties and hence are converted to object keys.
+
+```JS
+d3.csv("/data/employees.csv", function(data) {
+    console.log(data);
+});
+```
+
+This JS function is the same as doing this:
+
+```JS
+d3.csv("/data/employees.csv")
+    .get(function(data) {
+        console.log(data);
+    })
+```
+
+You can use *d3.request()* instead of .csv like so:
+
+```JS
+d3.request("/data/employees.csv")
+    .mimeType("text/csv")
+    .response(function (xhr) { return d3.csvParse(xhr.responseText); })
+    .get(function(data) {
+        console.log(data);
+    })
+```
+
+The row parameter can be used to convert the representation of the data, such as by changing names to upper case
+
+```JS
+d3.csv("/data/employees.csv")
+    .row(function(d) {
+        return {
+            age: d.age;
+            name: d.name.toUpperCase()
+        };
+    })
+    .get(function(data) {
+        console.log(data);
+    })
+```
+
+### d3.json()
+
+JSON data can be a single object, or an array of JSON objects. It works in a similar way to CSV. d3.json() takes a JSON file as input and converts it into an array of objects. It has a signature of:
+
+```JS
+d3.json(url, callback);
+```
+
+The first parameter is the url of a .json file and the second is a callback function. It passes a parsed data object as a parameter to the callback function. Here is an example where the JSON would be stored in a file called "users.json" in the data folder of the project. This is the JSON from the file:
+
+```JSON
+[{
+    "name": "John",
+    "age": 30,
+    "city": "Edinburgh"
+},
+{
+    "name": "Jane",
+    "age": 20,
+    "city": "Stirling"
+}]
+```
+
+This data is then loaded like so:
+
+```JS
+d3.json("/data/users.json", function(data) {
+    console.log(data);
+})
+```
+
+When run you can see D3 creates an array of objects with name, city and age properties making it easy for us to work with the data.
+
+### d3.tsv()
+
+D3's tsv() method takes a .tsv file as an input url and returns a data object after parsing it. This is the signature of the *d3.tsv()* method:
+
+```JS
+d3.tsv(url, callback);
+```
+
+Here is an example TSV file which would be stored in the data folder as employees.tsv:
+
+```TSV
+Name    Age
+John    30
+Jane    20
+```
+
+This is how the tsv function is used. It would output the name and age of every employee in the TSV file.
+
+```JS
+d3.tsv("/data/employees.tsv", function(data) {
+    for(var i=0; i < data.length; i++) {
+        console.log(data[i].Name);
+        console.log(data[i].Age);
+    }
+});
+```
+
+### d3.xml()
+
+```JS
+d3.xml(url, callback);
+```
+
+d3.xml() method takes a url of an xml file and returns an xml object. The following is an example of an employees.xml file.
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<row>
+    <Name>John</Name>
+    <Age>30</Age>
+</row>
+<row>
+    <Name>Jane</Name>
+    <Age>32</Age>
+</row>
+</root>
+```
+
+```JS
+d3.xml("/data/employees.xml", function(data) {
+    console.log(data);
+});
+```
+
+You can parse and traverse the above XML as shown below:
+
+```JS
+d3.xml("/data/employees.xml", function(data) {
+    console.log(xml.documentElement.getElementsByTagName("Name", ""));
+});
+```
+
+This gives you all the tags with the tag name "Name".
+
+### Bind loaded data
+
+Once the data has been loaded, we have the data object available to work with. For this example, we will work with JSON data stored in a file named "users.json".
+
+```JSON
+[{
+    "name": "John",
+    "age": 30,
+    "location": "Edinburgh"
+},
+{
+    "name": "Callum",
+    "age": 25,
+    "location": "Glasgow"
+},
+{
+    "name": "Julia",
+    "age": 24,
+    "location": "London"
+},
+{
+    "name": "Tyrion",
+    "age": 40,
+    "location": "Kings Landing"
+}]
+```
+
+It is an array of person objects containing a name, age and location. This is then loaded using the *d3.json()* method and binded with DOM elements.
+
+```JS
+d3.json("/data/users.json", function(error, data) {
+    d3.select("body")
+        .selectAll("p")
+        .data(data)
+        .enter()
+        .append(p)
+        .text(function(d) {
+            return d.name + ", " + d.location;
+        });
+});
+```
+
+Let's run through the code.
+
+*d3.json("/data/users.json", function(error, data) {})* - A file called *users.json* is loaded with *d3.json*. This then returns a formatted data object and an argument "error".
+
+*d3.select("body")* - Once we have the data object, we want to output it to the page, so we select the body element first and passes it on using method chaining.
+
+*.selectAll("p")* - In this example we are outputting in paragraph tags, but anything can be used. We need four <p> elements because this is the size of our data. D3 will look for paragraph tags on the page and sends the references to the next method in the chain, but we don't have any :'(.
+
+*.data(data)* - passes the data values from our dataset to the next method in the chain.
+
+*.enter()* - recieves the values from *data()* and as we don't have any references to paragraph elements, it returns empty placeholder references to the new elements.
+
+*.append("p")* - adds paragraph elements to the DOM for our elements.
+
+*.text(function(d) { return d.name + ", " + d.location; });* - Most D3 functions accept functions as parameters. In this scenario we use an anonymous function that returns a concatenation of name and location from our data object. *text()* is called and binds each concatenation to each of our paragraph elements.
+
+### Error handling
+
+While loading data from an external source, D3 returns an argument called "error". You can use this to check whether the data got loaded successfully.
+
+```JS
+d3.json("/data/users.json", function(error, data) {
+    if(error) {
+        return console.warn(error);
+    }
+
+    d3.select("body")
+        .selectAll("p")
+        .data(data)
+        .enter()
+        .append("p")
+        .text(function(d) {
+            return d.name + ", " + d.location;
+        });
+});
+```
+
+If there is an error while loading data, D3 will return the error object. The if statement allows for checking if there was an error and making a decision based on this.
+
 ## Create SVG elements
 
 ## Create SVG chart
