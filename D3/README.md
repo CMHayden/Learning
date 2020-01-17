@@ -1013,6 +1013,309 @@ If there is an error while loading data, D3 will return the error object. The if
 
 ## Create SVG elements
 
+SVG or Scalable Vector Graphics provides different shapes like lines, rectangles, circles, ellipses... Hence designing visualizations with SVG gives you more flexibility and power in what you can achieve.
+
+SVG is an image that is text-based. It has a similar structure to HTML and sits in the DOM. It's properties can be specified as attributes and should have absolute positions relative to the origin (0, 0).
+
+The full SVG specifications can be found [here](https://www.w3.org/TR/SVG/).
+
+Here is an example of a rectangle in SVG:
+
+```HTML
+<svg width="500" height="500">
+    <rect x = "0" y="0" width="200" height="200"></rect>
+</svg>
+```
+
+In the example above, we have an svg tag. Think of SVG as a canvas to paint on. You need to specify a height and width for your canvas. All of the SVG elements such as rect, line, circle, or text would go inside the svg tag.
+
+Each SVG element has it's own properties, which includes both geometry and style properties. All properties can be set as attributes but it's better practice to provide geometry properties as attributes and style propperties as styles. And since SVG sits in the DOM, we can use *attr()* and *append()* just like for HTML elements.
+
+### Line
+
+An SVG line is represented by <line>. A line's attributes are:
+
+*   x1: x coordinate of the first point.
+*   y1: y coordinate of the first point.
+*   x2: x coordinate of the second point.
+*   y2: y coordinate of the second point.
+
+```HTML
+<svg width="500" height="500">
+    <line x1="100" y1="50" x2="100" y2="50" stroke="black" />
+</svg>
+```
+
+This applies x1, x2, y1 and y2 attributes to the line element along with a stroke attribute to specify the line colour.
+
+This can also be done with D3 like so:
+
+```HTML
+<body>
+<script>
+    var width = 500;
+    var height = 500;
+
+    // Create SVG element
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    // Create line element inside SVG
+    svg.append("line")
+        .attr("x1", 100)
+        .attr("x2", 500)
+        .attr("y1", 50)
+        .attr("y2", 50)
+        .attr("stroke", "black")
+</script>
+</body>
+```
+
+Let's look at the code.
+
+First we create variables for the SVG's height and width. It's good to have them in variables so they can be changed at one place without having to go through the entire code in case you choose to change the SVG's dimensions.
+
+Next we select the body element and append out SVG element to it and set SVG's width and height. We store the reference of this SVG in a variable called svg so we can use it later.
+
+Then we append a line element to our SVG and provide it with the x1, x2, y1, y2, and stroke attributes using the *attr()* function. By changing the Y coordinates between y1 and y2 we can create a slanted line, or a vertical line changing the X and Y coordinates.
+
+### Rectangle
+
+A rectangle is represented by the rect tag. It has the following attributes:
+
+*   x: X coordinate of the top left corner of the rectangle.
+*   y: Y coordinate of the top left corner of the rectangle.
+*   width: width of the rectangle.
+*   height: height of the rectangle.
+
+Let's see an example SVG rectangle:
+
+```HTML
+<svg width="500" height="500">
+    <rect x="0" y="0" width="200" height="200"></rect>
+</svg>
+```
+
+This rectangle can also be drawn with the D3 library like so:
+
+```HTML
+<body>
+<script>
+
+    var width = 500;
+    var height = 500;
+
+    //Create SVG element
+    var svg = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+    //Create and append rectangle element
+    svg.append("rect")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", 200)
+            .attr("height", 100)
+
+</script>
+</body>
+```
+
+In the above example, after adding the SVG we append a rect element and specify it's x and y coordinates along with the width and height. The default colour is black, hence why this outputs a black rectangle.
+
+### Circle
+
+A circle is represented by the circle tag. It has the following attributes:
+
+*   cx: x coordinate of the center of the circle.
+*   cy: y coordinate of the center of the circle.
+*   r: radius of the circle.
+
+Let's see an example SVG circle:
+
+```HTML
+<svg width="500" height="500">
+    <circle cx="250" cy="50" r="50"/>
+</svg>
+```
+
+This circle can also be drawn with the D3 library like so:
+
+```HTML
+<body>
+<script>
+
+    var width = 500;
+    var height = 500;
+
+    //Create SVG element
+    var svg = d3.select("body")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+    //Append circle 
+    svg.append("circle")
+       .attr("cx", 250)
+       .attr("cy", 50)
+       .attr("r", 50)
+
+</script>
+</body>
+```
+
+In this example, after adding the SVG we append a circle element and specify it's attributes. Same as the rectangle, it is black due to black being the default colour.
+
+### Ellipse
+
+An ellipse is represented by the ellipse tag. It has the following attributes:
+
+*   cx: X coordinate of the center of the cirlce.
+*   cy: Y coordinate of the center of the circle.
+*   rx: X radius of the circle.
+*   ry: Y radius of the circle.
+
+```HTML
+<svg width="500" height="500">
+    <ellipse cx="250" cy="25" rx="100" ry="25"/>
+</svg>
+```
+
+An ellipse can also be drawn with D3 like so:
+
+```HTML
+<body>
+<script>
+
+    var width = 500;
+    var height = 500;
+
+    var svg = d3.select("body")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+    svg.append("ellipse")
+       .attr("cx", 250)
+       .attr("cy", 50)
+       .attr("rx", 150)
+       .attr("ry", 50)
+
+</script>
+</body>
+```
+
+For an ellipse, we append an ellipse and, unlike the circle, we provide two radius, one for x and one for y.
+
+### Text
+
+SVG also allows for displaying text on the screen. This is done using the text element.
+
+```HTML
+<svg width="500" height="500">
+    <text x="250" y="25">Your text here</text>
+</svg>
+```
+
+Text can be added using D3. In this example, we will create an ellipse and write text on top of the ellipse.
+
+```HTML
+<body>
+<script>
+
+    var width = 500;
+    var height = 500;
+
+    //Create SVG element
+    var svg = d3.select("body")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+    
+    //Create group element
+    var g = svg.append("g")
+               .attr("transform", function(d, i) {
+                        return "translate(0,0)";
+               });
+
+    //Create and append ellipse element into group
+    var ellipse = g.append("ellipse")
+                   .attr("cx", 250)
+                   .attr("cy", 50)
+                   .attr("rx", 150)
+                   .attr("ry", 50)
+                   .append("text")
+
+    //Create and append text element into group
+    g.append("text")
+     .attr("x", 150)
+     .attr("y", 50)
+     .attr("stroke", "#fff")
+     .text("This is an ellipse!");
+
+</script>
+</body>
+```
+
+The ellipse used is the same as the one in the previous example, however, we introduce a group element here. The group element allows for grouping SVG elements together. In this scenario we are grouping the text element and the ellipse element together. 
+
+The group element is helpful for applying transformations so that they are applied to all of the child elements of a group.
+
+We have also added a stroke attribute to our text to change the colour to white and make it visible on the black ellipse.
+
+### Styling SVG elements
+
+In the above examples, we did not specify any colour, however, our elements were painted black. This is because black is the default SVG colour with no stroke.
+
+| Style Attribute   | Description                                                                                                   |
+| ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| Fill              | This is the fill color for your element. It can be color name, hex value, or RGB or RGBA values.              |
+| stroke            | This is the stroke color. Like our line example above, we can specify a color for our element.                |
+| stroke-width      | Stroke width specifies the width of our line or boundary. This is in pixels.                                  |
+| opacity           | Opacity will specify an opacity/transparency number. 0 is completely transparent and 1 is completely opaque.  |
+| font-family       | For text elements, we can specify the font-family. This works like CSS.                                       |
+| font-size         | We can also specify the font-size for text elements.                                                          |
+
+All of the above properties can be applied directly or by using css. 
+
+Let's rewrite the ellipse example and add some more style properties to the ellipse and text elements:
+
+```JS
+var width = 500;
+var height = 500;
+
+var svg = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+var g = svg.append("g")
+            .attr("transform", function(d, i) {
+                    return "translate(0,0)";
+            });
+
+var ellipse = g.append("ellipse")
+                .attr("cx", 250)
+                .attr("cy", 50)
+                .attr("rx", 150)
+                .attr("ry", 50)
+                .attr("fill", "green")
+                .attr("opacity", 0.5)
+
+g.append("text")
+    .attr("x", 140)
+    .attr("y", 50)
+    .attr("stroke", "steelblue")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "24px")
+    .text("I am a pretty ellipse!");
+```
+
+The output of this is a semi opaque green ellipse with "I am a pretty ellipse" wrote on it in steelblue, a sans-serif font and font size 24px.
+
 ## Create SVG chart
 
 ## Scales
