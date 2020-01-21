@@ -1330,6 +1330,30 @@ The output of this is a semi opaque green ellipse with "I am a pretty ellipse" w
 
 ---
 
+## University Notes
+
+### General Update Pattern
+
+Select
+
+Data (bind)
+
+Enter Selection
+
+    D3 returns to you all of the data items which don't have a corresponding data element on the screen, and allows you to create visual elements for these.
+
+Update Selection
+
+    Anything which already has a data element gets updated.
+
+Exit Selection
+
+    Exits the selection and removes the un-used elements.
+
+
+
+---
+
 ## Useful Links
 
 The best resource I have found for D3 are:
