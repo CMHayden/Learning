@@ -1350,6 +1350,16 @@ Exit Selection
 
     Exits the selection and removes the un-used elements.
 
+### Model View Presenter Pattern
+
+Similar to the MVC (model view controller) pattern.
+
+Model is the data table and it's methods
+
+Presenter can also be called the controller. It the control code.
+
+Views are the output and what the user sees when using the application.
+
 
 
 ---
@@ -1363,6 +1373,8 @@ The best resource I have found for D3 are:
 * [D3 Documentation](https://github.com/d3/d3/wiki) - documentation from D3 on how to use D3 in your project.
 
 * [D3 API Documentation](https://github.com/d3/d3/blob/master/API.md) - documentation on how to use the D3 API
+
+* [Data Visualization Course Material](http://www.macs.hw.ac.uk/~mjc/F20-21DV/) - material from the data visualization course at HW.
 
 ## Current examples in this repo
 * Bar Chart
