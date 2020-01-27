@@ -1324,6 +1324,77 @@ The output of this is a semi opaque green ellipse with "I am a pretty ellipse" w
 
 ## Bar chart
 
+Let's create a vertical bar chart using the following dataset:
+
+```csv
+year,value
+2011,45
+2012,47
+2013,52
+2014,70
+2015,75
+2016,78
+2017,82
+2018,87
+2019,90
+```
+
+We start with creating the SVG and defining the scales for our bar chart like so:
+
+```JS
+var svg = d3.select("svg"),
+    margin = 200,
+    width = svg.attr("width") - margin,
+    height = svg.attr("height") - margin;
+
+var xScale = d3.scaleBand().range([0, width]).padding(0.4),
+    yscale = d3.scaleLinear().range([height,0]);
+
+var g = svg.append("g")
+            .attr("transform", "translate(" + 100 + "," + 100 + ")");
+```
+
+In this code, the set of variable declarations is used to set a margin, width, height, and select the SVG element in the HTML code with D3.
+
+The next set of declarations deals with the scales for the X and Y axis. For the X axis we use *d3.scaleBand()* which is used to construct a band scale which is useful when the data has discrete bands such as years. We need to provide a domain and a range to this function, where the domain is the input and range is the output. The *scaleBand()* function creates an empty domain that we can specify once loading our data. The range for the band is the width of the SVG. We then specify a padding to add space between the bars.
+
+*d3.scaleLinear()* defines a linear scale for the Y axis. As this is a vertical axis, the range is the height of the SVG.
+
+The *var g* is used to create a group element in the SVG. This group will contain the axes and bars. The transform attribute is used to position the graph with some margin.
+
+We then load the data from our csv file and add axes to the SVG:
+
+```JS
+d3.csv("XYZ.csv", function(error, data) {
+    if (error) {
+        throw error;
+    }
+
+    xScale.domain(data.map(function(d) { return d.year; }));
+    yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
+
+    g.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(xScale));
+
+    g.append("g")
+        .call(d3.axisLeft(yScale).tickFormat(function(d){
+            return "$" + d;
+        }).ticks(10))
+        .append("text")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("value");
+});
+```
+
+The first part of this code uses the *d3.csv()* function to load the csv file (XYZ.csv) as data and check for errors. Once the data is loaded, we provide the domain values to the X and Y scales (*Scale.domain(data.map(function(d) {return d.year;}));*). The *data.map()* function maps the discrete year values to the X scale. In the yScale we also use the *d3.max()* function to input the domain value for the Y axis.
+
+Then we add axes to the SVG by adding another group to the SVG to have the x-axis grouped under one element. We then transform the attribute to shift the x-axis to the bottom of the SVG. Then it gets inserted by using the *call(d3.axisBottom(x))* function.
+
+Finally we focus on the Y axis. Firstly we format the ticks to show a dollar sign as it is a monetary value. This is done with the *tickFormat(function())* function. We also specify the number of ticks we want the Y axis to have using *ticks()*.
+
 ## Animated bar chart
 
 ## Pie chart
