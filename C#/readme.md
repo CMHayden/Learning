@@ -936,6 +936,22 @@ public class AudioPlayer {
 
 Delegates are frequently used for GUI programming and handling events. An event for instance could be a mouse click. In the GUI code a delegate is used to refer to the method that will handle the mouse click. In the application code, an instance for the delegate is provided to perform the actual work. This achieves a separation of concerns between the GUI and the application.
 
+#### Anonymous Methods
+
+When instantiating a delegate with a short method it is cumbersome to define a method only to provide an instance to the delegate. In these cases, anonymous methods can be used, e.g. for increasing its argument:
+
+```C#
+delegate(ref int counter) { counter++; }
+```
+
+This form can be used instead of the name of a concrete method.
+
+#### Lambda Expressions
+
+Lambda expressions are a generalisation of anonymous methods. They behave like unnamed functions in a functional language, e.g. arrow functions in JS. Whereas anonymous methods can only be used in the context of delegates, lambda expressions can be used wherever a method is expected. This is used for the LINQ engine of C# for accessing databases.
+
+
+
 ---
 
 ## Reflection
