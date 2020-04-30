@@ -7,6 +7,7 @@
     <title>Bar Chart</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+
 </head>
 <body>
     <canvas id="myChart"></canvas>
@@ -49,8 +50,21 @@
             },
             options: {
                 responsive: true,
-                maintainAspectRation: false
+                maintainAspectRation: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontSize: 15
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontSize: 15
+                        }
+                    }]
+                }
             }
+            
         });
     
     </script>
