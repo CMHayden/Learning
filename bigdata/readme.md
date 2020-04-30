@@ -39,3 +39,16 @@ This refers to the trustworthiness and accuracy of the data. Can you be sure the
 A real world objective is critical to the mashup of the four Vs. Will the insights gathered from analysis serve to create a cost cutting measure? Will it lead to the discovery of a critical causal effect that results in a cure to a disease? 
 
 The ultimate objective of any big data project should be to generate some sort of value for the company doing all the analysis. Otherwise, you’re just performing some technological task for technology’s sake.
+
+## Big Data challenges
+
+**Unprecedented data growth**
+
+In 2010, there was 1.2 zettabytes of data, in 2020, there is to be around 40 zettabytes of data. The growth is increasing exponentially, with 90% of data being generated in the last two years. This is due to the advances in technology. The use of mobile phones, pcs, tablets... paired with the accesibility to the internet along with all of the implementations of internet of things. The data we generate is extremely hard and complex to store due to the sheer volume and growth rates of it.
+
+**Real-time analytics**
+
+Real time analystics is the use of data as soon as it is available. This allows businesses to react to changes without delay, meaning they can seize opportunities or prevent problems before they happen. In comparisson to batch analytics which may take hours or even days to yield results. In order to 
+
+**Increased scalability requirements**
+
