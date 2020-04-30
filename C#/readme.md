@@ -989,9 +989,182 @@ Student s1 = (Student) formatter.Deserialize(streamIn);
 streamIn.Close();
 ```
 
+This uses a binary formatter. For compatibility across platforms, you often want other formats such as SOAP (System.Runtime.Serialization.Formatters.Soad) or XML (System.Xml.Serialization).
+
 ### Explicit Serialisation
 
-To w
+Writing your own serialization function is easy, and useful in many contexts such as implementing a ToString() function. To serialise an object of class A:
+
+* Serialize all value type attributes, by directly writing the data into the result buffer.
+
+* Serialize all reference type attributes by recursively calling serialisation on them.
+
+### Naive Serialisation
+
+We implement ToString() for our Student example as one special case of serialisation:
+
+```C#
+public string ToString() {
+    return String.Format(
+        "Name: {0} {1}\tAddress: {2} \nMatric. No.: {3} \tDegree: {4}",
+        this.GetfName(),
+        this.GetlName(),
+        this.GetAddress(),
+        this.matricNo, 
+        this.degree
+    );
+}
+```
+
+### Serialisation Using Overloading
+
+A better way to implement serialisation is to use the class hierarchy and overloading:
+
+```C#
+public override string ToString() {
+    string base_str = base.ToString();
+    string this_str = String.Format("MatricNo: {0} \tDegree: {1}", this.matricNo, this.degree);
+    return base_str+"\n"+this_str;
+}
+```
+
+This way, any change in ToString() as defined in the base class is picked up without further code changes. The implementor of the Student class no longer needs to know details of the base class (person), abstracting over implementation details and making the code more re-usable.
+
+### Properties Rather Than Fields
+
+We now use properties rather than fields to better controll access to the data:
+
+```C#
+class Student: Person{
+    //private data for student
+    private string _matricNo;
+    private string _degree;
+
+    //properties to access the data
+    public string degree {
+        get { return _degree; }
+        set { _degree = value; }
+    }
+
+    public string matricNo {
+        get { return _matricNo; }
+        set { _matricNo = value; }
+    }
+
+    //constructor would go here
+}
+```
+
+### Serialisation using Reflection
+
+We can further improve the code by abstracting over the concrete property-names as well by using reflection:
+
+```C#
+public override string Serialise() {
+    string str = "";
+    Type type = this.GetType();
+    PropertyInfo[] props = types.GetProperties();
+    foreach(PropertyInfo propertyInfo in props) {
+        str += String.Format("\t{0}: {1}",
+            propertyInfo.Name,
+            propertyInfo.GetValue(this, null)
+        );
+    }
+    return str;
+}
+```
+
+**NOTE** this code doesn't mention the concrete names of properties at all!
+
+Running this code will show the names and values for all properties visible in an object.
+
+### Fields vs Properties
+
+You can use either fields or properties, but the reflective code needs to know whether to look for one or the other. Properties are generally safer, even if using the default getter and setter, because you can later modify (for example) the setter to trace calls to it like this:
+
+```C#
+public string officeNo {
+    get { return _officeNo; }
+    set {
+        StackTrace stackTrace = new StackTrace();
+        MethodBase methodBase = stackTrace.GetFrame(1).GetMethod();
+        Console.WriteLine("setter called by: " + methodBase.Name);
+        _officeNo = value;
+    }
+}
+```
+
+This could also be done using attributes.
+
+### Custom attributes
+
+Now we want to define our own attributes and attach it to code. We want to define a BugFix attribute which captures information of bug-fixes during development. Thi sis better than capturing changes in comments because the meta-data is machine-readable.
+
+We want to use an attribute like this:
+
+```C#
+[BugFixAttribute(121, "Callum M Hayden", "30/4/20", Comment = "Fixed the annoying bug with the GUI")]
+
+public class MyMath
+```
+
+To define custom attributes first we need to define a class for our attributes, deriving from System.Attribute
+
+```C#
+public class BugFixAttribute : System.Attribute
+```
+
+Then we need to specify to which language constructs this attribute can be attatched to. To do this, we use an attribute:
+
+```C#
+[AttributeUsage(AttributeTargets.Class |
+                AttributeTargets.Constructor |
+                AttributeTargets.Field |
+                AttributeTargets.Method | 
+                AttributeTargets.Property,
+                AllowMultiple = true)]
+```
+
+The constructor of the attribute is faily conventional:
+
+```C#
+//attribute constructor for positional parameters
+public BugFixAttribute
+(
+    int bugID,
+    string programmer,
+    string date
+)
+{
+    this.BugID = bugID;
+    this.Programmer = programmer;
+    this.Date = date;
+}
+```
+
+We want to use both positional and named arguments to the constructor. To do this we introduce properties:
+
+```C#
+//accessors
+public int BugID { get; private set; }
+public string Date { get; private set; }
+public string Programmer { get; private set; }
+
+//property for named parameter
+public string Comment { get; set; }
+```
+
+**NOTE** the positional parameters are read-only, by specifying the setter as private. The named parameter Comment is implemented as a property.
+
+### TL;DR:
+
+Reflection allows the programmer to put meta-data onto language constructs.
+
+A common example is the use of the serializable attribute, which is needed for tasks such as writing to a file.
+
+Reflection can be used ot make code more abstract hence more general, e.g. iterating over all properties.
+
+The programmer can define own custom attributes to attach meta-data such as information about code changes.
 
 ---
 
