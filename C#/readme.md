@@ -894,6 +894,48 @@ try {
 }
 ```
 
+### Delegates
+
+Delegates are an object oriented technique for defining higher-order functions, i.e. functions that can take other functions as arguments. As delegates refer to methods, when delcaring delegates the type of a method is speccified.
+
+```C#
+public delegate int FindResult(object o1, object o2);
+```
+
+A concrete method can be instantiated for the delegate if it matches its result and parameter types. Anonymous methods or lambda abstractions can also be instantiated for a delegate.
+
+Here is an example for storing and playing media:
+
+```C#
+public class MediaStorage {
+    public delegate int PlayMedia();
+    public void ReportResult(PlayMedia playerDelegate) {
+        if (playerDelegate() == 0) {
+            Console.WriteLine("Media played correctly");
+        } else {
+            Console.WriteLine("Error in playing media");
+        }
+    }
+}
+```
+
+In the ReportResult method, the player delegate is called, which refers to a concrete method without fixing it in the code. At compile time, only the type of the delegate needs to be known. At run-time the delegate must be instantiated with one concrete method. This is the same abstraction step as it is done for data when using an abstract class as base type, and instantiating it with a sub-class at run-time.
+
+The ReportResult method can be applied to different types of players:
+
+```C#
+public class AudioPlayer {
+    private int audioPlayerStatus;
+    public int PlayAudioFile() {
+        Console.WriteLine("Playing audio file");
+        audioPlayerStatus = 0;
+        return audioPlayerStatus;
+    }
+}
+```
+
+Delegates are frequently used for GUI programming and handling events. An event for instance could be a mouse click. In the GUI code a delegate is used to refer to the method that will handle the mouse click. In the application code, an instance for the delegate is provided to perform the actual work. This achieves a separation of concerns between the GUI and the application.
+
 ---
 
 ## Reflection
