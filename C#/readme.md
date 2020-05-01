@@ -1166,6 +1166,32 @@ Reflection can be used ot make code more abstract hence more general, e.g. itera
 
 The programmer can define own custom attributes to attach meta-data such as information about code changes.
 
+## Parallel Programming with C#
+
+Parallel programming is the use of multiple resources, in this case, processors, to solve a problem. This type of programming takes a problem, breaks it down into a series of smaller steps, delivers instructions, and processors execute the solutions at the same time. 
+
+C# provides several mechanisms for parallel programming:
+
+### Explicit threads
+
+Explicit threads with synchronisation via locks, critical regions etc. The user gets full control over the parallel code. However, orchestrating the parallel threads is tricky and error prone due to race conditions, deadlocks, etc. This technique requires a shared-memory model.
+
+### Explicit threads with a message-passing library:
+
+Threads communicate by explicitly sending messages, with data required/produced, between workstations. Parallel code can run on a distributed-memory architecture, eg, a network of workstations. The programmer has to write code for unserialising the data that is sent between machines.
+
+### TL;DR:
+
+The preferred, high-level way of coding parallel computation in C# is through parallel patterns, an instance of design patterns.
+
+Parallel patterns capture common patterns of parallel computation. Two main classes of parallelism exist:
+
+* Data parallelism which is implemented through parallel for/foreach loops.
+
+* Task parallelism, which is implemented through parallel method invocation.
+
+Tuning the parallel performance often requires code restructuring (thresholding).
+
 ---
 
 ## Sources of Information
