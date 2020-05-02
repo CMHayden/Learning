@@ -80,6 +80,66 @@ The most important part is, that whatever the software inside the container is, 
 
 Isn't that a DevOps' dream?
 
+## Get Docker Up and Running
+
+This section will discuss the different versions of Docker and how to set them up.
+
+### Various Products for Various Needs
+
+In a production environment that runs containers hosting critical applications, you would be safer to use Docker Enterprise. However, on your development machine or a continous integration build machine, you can use the free docker engine community or docker desktop on your machine.
+
+| Use                                   | Product                                   |
+| ------------------------------------- | ----------------------------------------- |
+| Developers machine                    | Docker Engine Community or Desktop        |
+| Small server, small expectations      | Docker Engine Community                   |
+| Serious stuff, critical applications  | Docker Engine Enterprise or Kubernetes    |
+
+Whatever edition you install, you can check your installation by running the command below. The output should be a hello message from docker.
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker run hello-world
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+```
+
+### Community on a Developer or CI Machine
+
+This section will discuss the instalation process of Docker community edition.
+
+**Windows 10**
+
+Docker desktop requires a Professional or Enterprise 64-bit edition of windows 10 because it is based on Hyper-V. If your version of Windows does not meet these requirements, you may use the older [Docker Toolbox](https://docs.docker.com/toolbox/overview/) based on Virtual Box.
+
+Before installing Docker Desktop it's important that you enable Hyper-V and hardware virtualization in the BIOS. Then you can follow [these instructions](https://docs.docker.com/docker-for-windows/install/).
+
+During installation, you will be asked to use a Windows or Linux container. I'd suggest Linux containers since you can change your mind at any moment later on, and the majority of container images are based on Linux.
+
+**Linux**
+
+There are other Docker packages available and you can simply follow the steps depending on your version, by selecting one of the following versions: [CentOS 7](https://docs.docker.com/engine/install/centos/), [Debian or Raspbian](https://docs.docker.com/engine/install/debian/), [Fedora 26+ 64-bit](https://docs.docker.com/engine/install/fedora/), [Ubuntu Bionic, Xenial or Trusty 64-bit](https://docs.docker.com/engine/install/ubuntu/).
+
+Whatever your Linux flavor, there are common post-installation steps [here](https://docs.docker.com/engine/install/linux-postinstall/). Make sure that you read them carefully and double-check them if you can't run the hello-world test.
+
+**Mac**
+
+Docker Desktop requires a Mac OS Sierra 10.12 or above. If you have an older version you may use the [Docker Toolbox](https://docs.docker.com/toolbox/overview/) based on Virtual Box.
+
+### Enterprise on a Server
+
+This section will discuss the installation process of Docker enterprise edition on a server.
+
+**Windows Server 2016**
+
+Docker Enterprise is available for free to windows server 2016 customers. Just [check the instructions](https://docs.docker.com/ee/docker-ee/windows/docker-ee/).
+
+**Linux**
+
+Docker Enterprise can be run on CentOS, Red Hat, SUSE, and Ubuntu amongst others. You can check if your version of Linux by using the [list of all supported OS](https://hub.docker.com/search/?type=edition&offering=enterprise).
+
+**Cloud**
+
+Docker enterprise is available as a template [for Azure](https://hub.docker.com/editions/enterprise/docker-ee-azure) and [for AWS](https://hub.docker.com/editions/enterprise/docker-ee-aws).
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
