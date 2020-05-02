@@ -140,6 +140,26 @@ Docker Enterprise can be run on CentOS, Red Hat, SUSE, and Ubuntu amongst others
 
 Docker enterprise is available as a template [for Azure](https://hub.docker.com/editions/enterprise/docker-ee-azure) and [for AWS](https://hub.docker.com/editions/enterprise/docker-ee-aws).
 
+## Basic Concepts
+
+Docker is built around three basic concepts. Containers, images and registries. This section will cover these concepts.
+
+**Containers**
+
+A container is what we run and host in docker. You can think of it as an isolated machine or a virtual machine.
+
+From a conceptual point of view a container runs inside the Docker host isolated from the other containers and the host operating system. It can't see other containers, physical storage or get incoming connections unless explicitly stated. It has everything it needs to run: an OS, packages, runtimes, files, environment variables, standard input, and output.
+
+One docker server can have multiple of the same containers. This is typically the case when a server hosts a release and a test version. This allows for hosting both versions on the same server where each containers has its own ID.
+
+**Images**
+
+Any container that runs is created from an image. An image describes everything that is needed to create a container; it's a template for containers. You can create as many containers as needed from a single image.
+
+**Registries**
+
+Images are stored in a registery. Containers use the registry to share images to allow for duplicating containers.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
