@@ -283,6 +283,32 @@ This will completely delete the container with the id "48bab7f673b3". This can b
  cmhayden@Callums-MacBook-Pro ~ docker inspect 48bab7f673b3
 ```
 
+### More About Docker Run
+
+The docker run command is like buying a new computer, executing a command on it, and throwing it away. Each time a container is created from an image, you get a new isolated environment to play with inside the container.
+
+The contents of the ocntainer depend on the image the container is based on. After the image name, you can give commands for what you want executed inside the container.
+
+Let's illustrate the new-computer-that-you-trash methaphor using the alpine image. This image is a very small linux image that does enough for this purpose. Let's run a container and get it to display its hostname running the following command:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker run alpine printenv
+```
+
+With this command we are asking for a container to be created using the alpine image, and for the container to execute the *printenv* command. This command is one of the binary programs packed into the alpine image. The output will include the path, hostname and home of the container.
+
+If the same command is run two more times to create two more alpine containers and have them display their hostname, their hostnames are all different between eachother.
+
+What needs to be understood is that Docker is a tool that allows for getting the equivalent of a disposable, single-time use computer. Once that's understood a whole new world opens for you. You come from a world where getting a new machine and configuring it required enough efforts to justify keeping it, desptie all the side effects that come with each subsequent use. In the container's world, getting a new enviornment is cheap enough for it to get many of them.
+
+To clean up your containers after this section, you can run the following command:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker container prune -f
+```
+
+This command removes all stopped containers, with the -f tag specifying an implicit confirmation to proceed and delete all stopped containers.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
