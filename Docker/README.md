@@ -160,6 +160,129 @@ Any container that runs is created from an image. An image describes everything 
 
 Images are stored in a registery. Containers use the registry to share images to allow for duplicating containers.
 
+## Use Docker Images
+
+ This section will discuss how to use docker images.
+
+ ### Run a Container
+
+ This section will explain how to run the hello-world image, along with what happens in the background when running this container.
+
+ With Docker fully installed, we run the following command:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker run hello-world
+```
+
+The output from this is:
+
+```bash
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+```
+
+And done! You've ran your first container! Here's how it works:
+
+1. The command requests Docker to create and run a container based on the *hello-world* image.
+
+2. Since the *hello-world* image wasn't already present on your disk, Docker downloaded it from a default registry called Docker Hub.
+
+3. Docker created a container based on the *hello-world* image.
+
+4. The *hello-world* image states that, when started, it should output text to the console, which is the image you see as the container is running.
+
+5. The container is stopped.
+
+If you run the command again, you'll notice it runs a lot quicker. This is because it skips the second step as the image is already present on your disk. This is a simple optimization which helps Docker to use less of a machine's resources.
+
+### Container Management
+
+Container management is mostly carried out with the command line. If you need more information about a command you can use the *--help* flag. Here is an example of how to get more information about the run command used previously:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker run --help
+```
+
+Here are the commands you need to know with docker:
+
+* **docker ps** lists the containers that are still running. The *-a* flag can be added to see all containers that have stopped.
+
+* **docker logs** gets the logs of a container, even when it has stopped. Along with the docker logs command, you must include a parameter (name or ID) to state which container you want the logs from.
+
+* **docker inspect** gets detailed information about a container. This command also takes a parameter of name or ID of the container you want to inspect.
+
+* **docker stop** deletes a container that's still running. This command needs to know which container to stop so must be supplied with a name or ID of a container.
+
+* **docker rm** deletes a container, even if it is not running. This accepts a container name or ID as a parameter.
+
+### Post-Mortem Inspection
+
+This section will discuss how you can inspect a stopped container, along with how to delete it.
+
+The hello-world container shown above stops because its only job is to output text. So we will use this to get a better grip of container tooling.
+
+Run the following command on command-line:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker ps
+```
+
+If the hello-world container is the only container you have ran, then there should be no output. Now run the following command:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker ps -a
+```
+
+You should see a container ID, an image "hello-world" and a status of exited. You may also see a time stamp of when it was created, a name for it and a ports section. The container ID should be noted as it allows for running commands on the container.
+
+Now if you run the following command, changing the ID "48bab7f673b3" for your container's ID:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker logs 48bab7f673b3
+```
+
+You will see the exact same text as when you ran the container. In real-world scenarios, you'll have containers running in the background and this command lets you see their output.
+
+Run this command changing the ID "48bab7f673b3" to your containers ID same as with the previous example.
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker inspect 48bab7f673b3
+```
+
+This gives you information about the container, even if it's stopped. In real world scenarios, this may prove useful for understanding what happens inside your containers. 
+
+While information is power, this information takes up space. Due to this, once you're finished with a completly done container, you can free up this space again using the the docker rm command as shown below:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker rm 48bab7f673b3
+```
+
+This will completely delete the container with the id "48bab7f673b3". This can be tested by running the following commands which will give an output of an error as no such containers exist.
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker ps -a
+ cmhayden@Callums-MacBook-Pro ~ docker logs 48bab7f673b3
+ cmhayden@Callums-MacBook-Pro ~ docker inspect 48bab7f673b3
+```
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
