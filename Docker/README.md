@@ -373,6 +373,38 @@ To stop and clean up the container, we can use the following commands:
 
 The last command is simply to ensure the container is completly gone.
 
+**Listening for Incoming Network Connections**
+
+By default, a container runs in isolation, hence, it doesn't listen for incoming connections. You must explicitly open a port on the host machine and map it to a port on the container.
+
+Suppose I want to run the NGINX web server. It listens for incoming HTTP requests on port 80 by default. If I simply run the server, my machine does not route incoming requests to it unless I use the *-p* switch on the docker run command.
+
+The *-p* switch takes two parameters; the incoming port you want to open on the host machine, and the port to which it should be mapped inside the container. For instance, here is how I state I want my machine to listen for incoming connections on port 8085 and route them to port 80 inside a container than runs NGINX:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker run -d -p 8085:80 nginx
+```
+
+The -d flag for detaching the container is not mandatory, however, as we are running a server container it's a good idea to keep in the background. An NGINX server container starts and I get its ID.
+
+Now I can run a bowser and query that server using the http://localhost:8085 URL. This will show the welcome to nginx screen. If not, then try to stop and delete the container and try again making sure the ports are correctly specified.
+
+Since the container is running in the background, its output isn't displayed on the terminal. However, with the docker logs command we can still view it
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker logs 8451
+```
+
+This will allow us to see a trace of the browser's HTTP request that NGINX received.
+
+The container continues to run and serve incoming requests on port 8085. We can see this by running the docker ps command. To kill it we use the stop and rm commands like so:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker stop 8451
+ cmhayden@Callums-MacBook-Pro ~ docker rm 8451
+```
+
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
