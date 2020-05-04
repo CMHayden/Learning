@@ -440,6 +440,24 @@ Suppose you run a MySQL database with no volume. Any data stored in it will be l
 
 This will ensure that any data written to the */var/lib/mysql* directory inside the container is actually written to the */your/dir* directory on the host system. This ensures that no data is lost when the container is restarted.
 
+### Where Do Images Come From?
+
+Each container is created from an image. You provide the image name to the *docker run* command. Docker first looks for the image locally and uses it when present. When the image is not present locally, it is downloaded from a registery. You can list the local images using the following command:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker images ls
+```
+
+When an image is published to a registery, its name must be `<repository_name>/<name>:<tag>`. Here, *tag* is optional. When missing it is considered to be latest by default. *repository_name* can be a registery DNS or the name of a registry in the Docker Hub.
+
+All of the images used so far in this document have been downloaded from Docker Hub as they are not DNS names. 
+
+Although the docker run commands downloads images automatically when missing, you may want to download an image manually. This is done with the docker pull command, which forces an image to download whether it is already present or not. Here are scenarios where using a docker pull command is relevant:
+
+* You expect that the machine which runs the containers does not have access to the registeries at the time of running the containers.
+
+* You want to ensure you have the latest version of an image.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
