@@ -424,6 +424,22 @@ Such isolation and ease of use at a low resource cost is a hugh advantage of con
 
 When using such images, you could wonder where the data is stored. Docker uses volumes for this and will be discussed next.
 
+### Using Volumes
+
+When a container writes files, it writes them inside the container. This means that when the container dies (host machine restarts, container is moved, it fails...) all of the data is lost. It also means if you run the same container multiple times in a load-balancing scenario, each container will have its own data, leading to inconsistent user experience.
+
+For simplicity sake, a rule of thumb is to ensure containers are stateless, such as by storing data in an external database or distributed cache. However, sometimes you need to store files in a place where they are persisted; this is done with volumes.
+
+Using a volume you map a directory inside the container to a persistent storage. Persistent storages are managed with drivers and they depend on the host. An example is Amazon S3 from AWS. With docker desktop you can map volumes to actual directories on the host system. This is done using the *-v* flag on the docker run command.
+
+Suppose you run a MySQL database with no volume. Any data stored in it will be lost when the container is stopped or restarted. In order to avoid data loss, you can use a volume mount like so:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker run -v /your/dir:/var/lib/mysql -d mysql:5.7
+```
+
+This will ensure that any data written to the */var/lib/mysql* directory inside the container is actually written to the */your/dir* directory on the host system. This ensures that no data is lost when the container is restarted.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
