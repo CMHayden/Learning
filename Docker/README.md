@@ -309,6 +309,70 @@ To clean up your containers after this section, you can run the following comman
 
 This command removes all stopped containers, with the -f tag specifying an implicit confirmation to proceed and delete all stopped containers.
 
+### Running a Server Container
+
+This section will cover server containers and how to run long-lived ontainers.
+
+In previous sections we have shown how to run short-lived containers. They normally do some process, display some output and stop. However, there's a very common use for long-lived containers: server containers. Be it for a web application, an API, or a database, you want a container that continously listens for incoming network connections and is potentially long-lived.
+
+**NOTE** it's best not to think about containers as long-lived, even when they are. Don't store information inside containers. In other words, ensure your containers are stateless. A stateless container never stores its state when run, while stateful containers store some information about their state each time they are run. Docker container's are very stable, however, stateless containers allows for easy scaling up and recovery.
+
+In short, a server container is long-lived and listens for incoming network connections.
+
+**Running a long-lived container**
+
+In previous examples we remained connected to the container from our command line with the docker run command, making it impractical for running long-lived containers.
+
+To disconnect while allowing the long-lived container to continue to run we need to use the -d (--detach) flag on the docker run command. Running a detached container immediately gives you control over your command line back, and the standard output of the container is no longer redirected to your command-line.
+
+Suppose we want to run a ping command. This can be done with the Linux alpine container like so:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker run alpine ping www.docker.com
+```
+
+This command will run ping continously pininging the Docker server. It is an example of a long-lived container, however, it is not detached from the command-line. This can be detached by using *CTRL+C* allowing the command to continue to run in the background. However, it is easier to run it as detached from the beginning like so:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker run -d alpine ping www.docker.com
+```
+
+With the use of the -d flag, the container starts but we do not see the output. Instead the docker run command returns the ID of the container that was just created. While the ID may be long, we don't need the full ID for commands. As long as there is no ambiguity you can use the start of the ID in commands that require an ID.
+
+The container is still running and can be seen using the *docker ps* command. The output is similar to this:
+
+| Container ID    | Image  | Status       |
+| --------------- | ------ | ------------ |
+| 789b08ce24b1    | Alpine | Up 2 minutes |
+
+The status is telling us that the container has been running for two minutes and is still alive.
+
+We can interact with the container using the commands shown previously such as *docker logs* to see its output, *docker inspect* to get detailed information, and even *docker stop* to kill the command.
+
+Let's check the output of the container using the following command with just the beginning of our container ID
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker logs 789b
+```
+
+This will print out the whole standard output of the container from its beginning. We can get just a portion of the output by using the *--from*, *--until*, *--tail*, or *--since*. Lets check the most recent 10s of the logs:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker logs --since 10s 789b
+```
+
+In real-world applications with multiple running containers, you would generally want to redirect the containers' output to log management services such as papertrail. However, it can be useful to get the last output of a container for debugging purposes.
+
+To stop and clean up the container, we can use the following commands:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker stop 789b
+ cmhayden@Callums-MacBook-Pro ~ docker rm 789b
+ cmhayden@Callums-MacBook-Pro ~ docker ps -a
+```
+
+The last command is simply to ensure the container is completly gone.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
