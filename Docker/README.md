@@ -404,6 +404,25 @@ The container continues to run and serve incoming requests on port 8085. We can 
  cmhayden@Callums-MacBook-Pro ~ docker rm 8451
 ```
 
+**Wrapping It Up**
+
+One of the things I like most about containers is that they allow me to use any software without polluting my machine. Normally I would be hesitant about trying out new software as it means installing dependencies which may mess up my normal environment. With containers, even big pieces of server software can be tried out without polluting my machine.
+
+To illustrate this point, lets run Jenkins. Jenkins is a full continous integration server coded with Java. With Docker, we don't need to have Java nor any dependency on our machines to run a Jenkins server. By default, Jenkins listens on port 8080, so we can use the following command to run a Jenkins container:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker run -p 8088:8080 jenkins
+```
+
+**NOTE** we could add a *-d* flag since this is a long-running process. However, we are not using it here so we can directly see the output. For a real deployment, the -d flag should be used, with docker logs command to view output when needed.
+
+Once the command finishes creating the container, we can go to http://localhost:8088 and finish the setup in the browser, which will result in a full blown Jenkins.
+
+If you chose you do not want to use Jenkings, you can simply run the docker stop and docker rm commands. We can also run a separate Jenkings server by executing the docker run command again using another port.
+
+Such isolation and ease of use at a low resource cost is a hugh advantage of containers. 
+
+When using such images, you could wonder where the data is stored. Docker uses volumes for this and will be discussed next.
 
 ## Contributing
 
