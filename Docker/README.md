@@ -458,6 +458,56 @@ Although the docker run commands downloads images automatically when missing, yo
 
 * You want to ensure you have the latest version of an image.
 
+## Create Docker Images
+
+This section will discuss how to create your own simple image. Inside our images we can add our porograms and their dependencies so that multiple containers can be created from those images and live happily ever after.
+
+**Create a Simple Image**
+
+A Docker image is created using the docker build command and a Dockerfile file. The Dockerfile file contains instructions on how the image should be built.
+
+**NOTE** The *Dockerfile* can have any name. Naming it *Dockerfile* makes it easier for others to understand its purpose when they see the file in your project. It also means we don't need to state the file name when using the *docker build* command.
+
+In this section we will create a basic image for a container that displays "hello cmhayden/learning" when its run.
+
+For this, we need a file called Dockerfile that describes how the image should be built. A Dockerfile always begins with a *FROM* instruction because every image is based on another base image. This is a powerful feature since it allows for extending images that may already be rather complex.
+
+As we only need a simple text output, we can use a Debian Linux image. Here's what the Dockerfile is looking like:
+
+```FROM debian:8```
+
+This alone is not enough of course. While this gets a Debian Linux basis, there's no command that could display "hello cmhayden/learning". This is done using the CMD instruction which specifies which executable is run when a container is created using our image and provides optional arguments.
+
+Heres what our Dockerfile is looking like now:
+
+```
+FROM debian:8
+
+CMD ["echo", "Hello cmhayden/learning"]
+```
+
+**NOTE** both the program to run and its arguments are provided as a JSON array of strings.
+
+In order to create an image from the Dockerfile file, we need to run the docker build command. To do this, we use the following command in the terminal in the folder where the Dockerfile file is located:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker build -t hello .
+```
+
+The *-t* flag is used in front of the image. An image can be created without a name, it would have an auto-generated unique ID, so it is an optional parameter on the docker build command. The dot at the end of the command specifies which path is used as the build context, and where the Dockerfile is. If the dockerfile has a different name or is in a different directory, we need to use a *-f* flag in order to provide the file path.
+
+The docker build command just created an image named hello which is stored locally on our computers, and can be run in the same way as any other image:
+
+```bash
+ cmhayden@Callums-MacBook-Pro ~ docker run --rm hello
+```
+
+This command runs the recently build hello image, and removes it when completed.
+
+As expected, the docker run command above simply prints the message *Hello cmhayden/learning*. From here you may want to publish the image for others to use. We'll see how to do this in the following section.
+
+So in this section, we have created an image by creating a Dockerfile and running a docker build command, and we ran a container from the image created.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
