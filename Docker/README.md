@@ -508,6 +508,52 @@ As expected, the docker run command above simply prints the message *Hello cmhay
 
 So in this section, we have created an image by creating a Dockerfile and running a docker build command, and we ran a container from the image created.
 
+**Creating an Image Including Files**
+
+The previous image created didn't need anything other than what was contained within the base image. In a real-world scenario however, we will likely need files to be part of an image.
+
+Suppose we have the following index.html file:
+
+```html
+<html>
+  <body>
+    <h1>Hello !</h1>
+    <div>I'm hosted by a container.</div>
+  </body>
+</html>
+```
+
+If we need to create an image which includes a web server to serve this page we could use the debian base image and add instructions to the dockerfile that install NGINX, but it is easier to base the work on images that are already configured and tested. The Docker Hub contains an NGINX image where NGINX is already installed with a configuration which serves files found in the /usr/share/nginx/html directory.
+
+We next need to create the following dockerfile in the same folder as the HTML file:
+
+```
+FROM nginx:1.15
+
+COPY index.html /usr/share/nginx/html
+```
+
+Apart from the nginx base image, you can see a COPY instruction. Its first parameter is the file to be copied from the build context and its second parameter is where it should be copied to.
+
+The build context is the directory in which you ran the docker build command. Its contents are available for copy instructions to use, but only during the image build process. 
+
+This time the dockerfile does not need a CMD instruction to run the NGINX server as the base nginx:1.15 image already contains this instruction.
+
+The next step is running the following command within the same folder as our index.html and dockerfile:
+
+```bash
+docker build -t webserver .
+docker run --rm -it -p 8082:80 webserver
+```
+
+These commands build a webserver from the dockerfile instructions, then starts a container listening to our machine's 8082 port and redirects incoming connections to the container's 80 port. We can view our webserver at http://localhost:8082 which displays the HTML file.
+
+When running the container, you may notice the use of the -rm and -it flags. These are only for demo purposes and in reality a server container would be long-running so we'd run them without the flags.
+
+The -it flag allows us to stop the container with ctrl+c from the command line.
+
+The -rm flag ensures the container is deleted once it has stopped.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
