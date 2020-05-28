@@ -554,6 +554,34 @@ The -it flag allows us to stop the container with ctrl+c from the command line.
 
 The -rm flag ensures the container is deleted once it has stopped.
 
+**Images are Created Locally**
+
+When running docker build command to build an image from a dockerfile, the image is stored locally on the computer where the command is run.
+
+This allows for creating many containers from the locally created image, but most likely we want other devices to be able to run containers from the images we create. 
+
+To see the images available locally we can use this command:
+
+```bash
+docker image ls
+```
+
+For me, my output is somewhat like this:
+
+| Repository  | Tag    | Image ID     |
+| ----------- | ------ | ------------ |
+| webserver   | latest | c067edac5ec1 |
+| hello       | latest | 347c4eed84cd |
+| nginx       | 1.15   | f09fe80eb0e7 |
+| debian      | 8      | ec0727c65ed3 |
+
+Having images stored locally makes it faster to run a container from them, but there will be a time when some images are useless. To remove them, we can use the docker rmi command. It takes the image name or image id as a parameter. Here is an example of how I would delete the webserver image:
+
+```bash
+docker rmi c067edac5ec1
+docker rmi webserver:latest
+```
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
