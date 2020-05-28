@@ -642,7 +642,80 @@ Secondly, we are likely to run into trouble. What about the nginx image releasin
 
 Due to this it is recommended that you always specify the image tag. If you want to keep up to date with new releases of the base image, update the tag manually and make sure you test your image prior to releasing it.
 
+### Parameters as Environment Variables
 
+In real life, a container's inputs and outputs are likely to vary according to the container's environment. For example, a web application is likely to connect to a database and listen for incoming requests on a given DNS. The database connection details and DNS will have different values on a development machine, on the test server, and the production server.
+
+**Reading a Value**
+
+Whatever the technology you use inside your container, you can access environment variables. For instance, if you set a *name* environment variable, you may access it with:
+
+| Technology      | Access                         |
+| --------------- | ------------------------------ |
+| Linux Shell     | $name                          |
+| .NET Core       | .AddEnvironment-Variables();   |
+| Java            | System.getenv("name")          |
+| Node.JS         | process.env.name               |
+| PHP             | .$_ENV["name"]                 |
+| Python          | os.environ.get('name')         |
+
+**Providing a Value**
+
+On a real machine, environment variables are set on your system. Inside a container, they can be set from several sources, which make them appropriate for parameterizing your containers.
+
+In order to provide an environment variable’s value at runtime, you simply use the -e name=value parameter on the docker run command.
+
+**NOTE** A special use case is when the system that runs the container has the name environment variable defined, and you want to reuse it, then you can simply use the -e name parameter without specifying a value.
+
+**Default Value**
+
+You may also want to define a default value for an environment variable, in case it isn’t provided when a container is created; this may be done in the Dockerfile file, using the ENV instruction. For instance, the following makes sure that if the name variable isn’t provided to the docker run command, it has a default value of Dockie:
+
+```
+ENV name=Dockie
+```
+
+It's good practice to add an ENV instruction for every environment variable your impage expects since it documents your image.
+
+**Sample Usage**
+
+Let's say we want to create an image that can ping any given site. We can do this with a Linux shell script. We need a ping.sh file:
+
+```sh
+#!/bin/sh
+
+echo "pinging $host ..."
+ping -c 5 $host
+```
+
+We next need to define an image that includes and runs that script:
+
+```
+FROM debian:8
+
+ENV host=www.google.com
+
+COPY ping.sh .
+
+CMD ["sh", "ping.sh"]
+```
+
+The dockerfile includes an ENV instruction that specifies the host variable. We then create the image from the docker file by running a docker build command:
+
+```bash
+docker build -t pinger .
+```
+
+Next, we run these two containers based on the image:
+
+```bash
+docker run --rm pinger
+docker run --rm -e host=www.bing.com pinger
+```
+
+We don't provide the first container with any value for the host environment variable in order for it to default to google.com which is specified in the dockerfile. The second container is provided with the www.bing.com value.
+
+As you can see in the output of this, each container pinged a different host according to the values provided to them.
 
 ## Contributing
 
