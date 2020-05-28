@@ -582,6 +582,8 @@ docker rmi c067edac5ec1
 docker rmi webserver:latest
 ```
 
+You should be more than able to complete exercise 2 now.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
