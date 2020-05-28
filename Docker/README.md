@@ -462,7 +462,7 @@ Although the docker run commands downloads images automatically when missing, yo
 
 This section will discuss how to create your own simple image. Inside our images we can add our porograms and their dependencies so that multiple containers can be created from those images and live happily ever after.
 
-**Create a Simple Image**
+### Create a Simple Image
 
 A Docker image is created using the docker build command and a Dockerfile file. The Dockerfile file contains instructions on how the image should be built.
 
@@ -508,7 +508,7 @@ As expected, the docker run command above simply prints the message *Hello cmhay
 
 So in this section, we have created an image by creating a Dockerfile and running a docker build command, and we ran a container from the image created.
 
-**Creating an Image Including Files**
+### Creating an Image Including Files
 
 The previous image created didn't need anything other than what was contained within the base image. In a real-world scenario however, we will likely need files to be part of an image.
 
@@ -554,7 +554,7 @@ The -it flag allows us to stop the container with ctrl+c from the command line.
 
 The -rm flag ensures the container is deleted once it has stopped.
 
-**Images are Created Locally**
+### Images are Created Locally
 
 When running docker build command to build an image from a dockerfile, the image is stored locally on the computer where the command is run.
 
@@ -583,6 +583,66 @@ docker rmi webserver:latest
 ```
 
 You should be more than able to complete exercise 2 now.
+
+### Tags Matter
+
+Earlier we saw that image names include a name and an optional tag that, when missing, is considered to be latest by default.
+
+In the previous code snippets we didn't include a tag, therefore the default latest tag was used. This can be seen in the output of the docker image ls command ran before.
+
+As long as you are creating simple software, running on a simple CI/CD pipeline, it can be fine to use the latest tag. In a simple scenario, you may:
+
+1. Update the source code.
+
+2. Build a new image with the latest tag.
+
+3. Run a new container with the newest image.
+
+4. Kill the previous container.
+
+There's a caveat with this however, when using the docker run hello command on a distant machine, the distant machine doesnt know that there is a newer version of the hello:latest image. Due to this, you need to use the docker pull hello command on the distant machien in order for the newest version of your image to be downloaded to the machine.
+
+**Why Would You Tag Your Images?**
+
+Other reasons come to mind once you become more serious with your CI/CD pipeline. For instance you may want any or all of the following features:
+
+* Be able to roll back to a previous version of an image if you detect a problem with the latest image.
+
+* Run different versions in different environments. For instance, the latest version in a test environment and a previous version in a production environment.
+
+* Run different versions at the same time, routing some users to the latest version and some to the previous cersions. This is known as a canary release.
+
+* Deploy different versions to different users, and be able to run whatever version on your development machine while you support them.
+
+If you ensure each released image has a different tag, you can run any of the scenarios mentioned above.
+
+While we can tag our images however we want, common tags include:
+
+* A version number (hello:1.0, hello:1.1, hello:1.2...).
+
+* A Git commit tag (hello:2cd7e376, hello:3cd7e376...).
+
+In order to apply a tag, just state it during your build command:
+
+```bash
+docker build -t hello:1.0 .
+```
+
+**Tags for Base Images**
+
+Our images are based on other images; this is done with the *FROM* instruction in our dockerfiles. Just as we can tag our images, the base image we use can be the latest one or a tagged one.
+
+In a previous example we have used a tagged image to create the webserver as we used nginx:1.15. It's tempting to always use the latest ones so that we are always running on up-to-date software. All we need to do is to omit the tag altogether or mention the latest one. 
+
+**DON'T FALL FOR TEMPTATION** 
+
+First of all, it doesn't mean that any running container will be based on the latest version of nginx. Docker is about having reproducible images, so the latest version is evaluated when you build your image, not when the container is run. This means that the version will not change unless we run the docker build command again.
+
+Secondly, we are likely to run into trouble. What about the nginx image releasing a new version with breaking changes? If you build your image again, you may get a broken image.
+
+Due to this it is recommended that you always specify the image tag. If you want to keep up to date with new releases of the base image, update the tag manually and make sure you test your image prior to releasing it.
+
+
 
 ## Contributing
 
