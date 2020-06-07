@@ -745,6 +745,20 @@ The EXPOSE instruction enables someone who wants to run a container from your im
 
 For further details on creation of docker files, you can [check here](https://docs.docker.com/engine/reference/builder/).
 
+## Publish Docker Images
+
+### Rationale for Publishing
+
+When you create a container, you create it from an image that is available on your machine. There are two ways to have an image available on your machine:
+
+* Create an image using the docker build command as seen previously.
+
+* Get an image from a Registry using the docker pull command or implicitly when using the docker run command for an image that is not available locally.
+
+As a developer, you create images for your software to run in a controlled environment. Since we want our images to run on other machines, we need to ensure they're distributed to those machines. Your option is to publish your images to a Registry. When the other machines need to create containers from our images, they will simply pull them from the registry.
+
+Essentially, to publish our application to a new environment we simply upload the image to a Registry.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap, or reach out to me through [my website](http://www.callumhayden.com).
