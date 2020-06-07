@@ -773,6 +773,18 @@ A docker registry is sort of an image store that offers the following functions:
 
 There are many registries available such as the publicly available Docker Hub or use a private registry of our own. There are many ways to create private registries, an we'll cover several later. In any case, the process to tag and publish our images remains the same for every registry.
 
+### Publishing an Image
+
+Whichever registry you choose, publishing an image is a three-step process:
+
+1. Build your image *(docker build)* with the appropriate prefix name or tag *(docker tag)*.
+
+2. Log into the registry *(docker login)*.
+
+3. Push the image into the registry *(docker push)*.
+
+There are some slight changes according to the registry you use, but generally it follows this pattern.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap, or reach out to me through [my website](http://www.callumhayden.com).
