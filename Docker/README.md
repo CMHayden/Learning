@@ -717,6 +717,18 @@ We don't provide the first container with any value for the host environment var
 
 As you can see in the output of this, each container pinged a different host according to the values provided to them.
 
+### Storage
+
+As seen previously when exploring volumes, it's better to create images that result in stateless containers that rely on external data stores. Sometimes though, you need to store data in a persistent file system. When this situation arises, we can use the VOLUME instruction like so:
+
+```
+VOLUME /path/to/directory
+```
+
+Where the path is a path to a directory to be used inside the image. When the container is created with docker run, the -v flag can be used to map this directory to an actual volume on the host system. 
+
+By default, if the user does not map this volume to an external store for the container, the data will be stored inside the container.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
