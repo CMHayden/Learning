@@ -729,6 +729,18 @@ Where the path is a path to a directory to be used inside the image. When the co
 
 By default, if the user does not map this volume to an external store for the container, the data will be stored inside the container.
 
+### Networking
+
+When your image hosts server software, it listens to one or several ports. For example, a HTTP server normally listens on the TCP port 80. You can make this explicit by using an EXPOSE instruction like so:
+
+```
+EXPOSE 80
+```
+
+Using this instruction is purely for documentation purposes. It will NOT open a port to the outside world when a container is created from that image. Anyone who creates a container will need to explicitly bind that port to an actual port of the host machine using the -p flag of the docker run command. 
+
+The EXPOSE instruction enables someone who wants to run a container from your image to know which ports they should redirect to the outside world using the -p flag of the docker run command.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
