@@ -741,6 +741,10 @@ Using this instruction is purely for documentation purposes. It will NOT open a 
 
 The EXPOSE instruction enables someone who wants to run a container from your image to know which ports they should redirect to the outside world using the -p flag of the docker run command.
 
+### Wrapping up
+
+For further details on creation of docker files, you can [check here](https://docs.docker.com/engine/reference/builder/).
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap.
