@@ -759,6 +759,20 @@ As a developer, you create images for your software to run in a controlled envir
 
 Essentially, to publish our application to a new environment we simply upload the image to a Registry.
 
+### Registries
+
+A docker registry is sort of an image store that offers the following functions:
+
+* Ability to store various images.
+
+* Ability to store various tags for the same image.
+
+* A HTTP API that allows pushing images from a machine that produces them, or pull images to a machine that runs containers from those images.
+
+* TLS-secured connection to the API in order to avoid man-in-the-middle attacks.
+
+There are many registries available such as the publicly available Docker Hub or use a private registry of our own. There are many ways to create private registries, an we'll cover several later. In any case, the process to tag and publish our images remains the same for every registry.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap, or reach out to me through [my website](http://www.callumhayden.com).
