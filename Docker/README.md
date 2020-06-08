@@ -836,6 +836,24 @@ In order to run an image on another machine, such as the one previously publishe
 
 If you want to run an image stored in a private repository, you first need to log into the registry using docker login, after this you can use docker pull. After pulling the image, you can run it whenever you chose without needing to log in again.
 
+### Private Registries
+
+While public registries are convenient for sharing docker images, sometimes it's important to keep images to yourself, your company or your organization. This is where private registries come into play.
+
+When we published our image on docker hub, we had to use the login command to authenticate. With a private registry, users need to login aswell just to pull an image.
+
+There are many ways to get a private registry such as:
+
+* **Docker Hub** you pay according to the number of private repositories used.
+
+* **Azure Container Registry** allows you to have your own private registry in Azure.
+
+* **GitLab** has an included optional Docker registry which can be enabled so that each project can store the images it creates.
+
+* **The registry image** allows us to host our own registry on a Docker enabled machine as a container.
+
+To store images in a private registry, we use the same process as when pushing an image to Docker Hub. Our images' names simply need to be prefixed with the registry name before they are pushed.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap, or reach out to me through [my website](http://www.callumhayden.com).
