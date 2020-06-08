@@ -785,6 +785,51 @@ Whichever registry you choose, publishing an image is a three-step process:
 
 There are some slight changes according to the registry you use, but generally it follows this pattern.
 
+### Docker Hub
+
+Docker Hub is a docker registry offered by Docker Inc. It allows unlimited storage of public images, and paid plans to host private images. A public image may be accessed by others, which is precisely what we want when we make our software widely available - less for internal enterprise software.
+
+To publish images on Docker Hub, you need to create an account. When creating the account, the docker ID we select will be the prefix for images we publish to the Docker Hub. Suppose your ID name is cmhayden, your images should be tagged like so:
+
+```
+<cmhayden>/<name>:<tag>
+```
+
+For the purpose of learning, we will publish the webserve image created earlier. It's as easy as naming it correctly and pushing it to the registry. In my case, I need to name it cmhayden/webserver and there are two ways to do this.
+
+The first is to run the docker build command again using the correct name. This is a great option when we're using it from the start, but if we do this now, we will have two seperate images with the same contents but different names and IDs which is never a good idea.
+
+The second option is much better which is to use the docker tag command. A docker image can have several names as needed, and they can be added to an already existing image with the docker tag command. With this command, the image is not duplicated.
+
+Docker tag commands accepts two arguments; first the name of an existing image, and second the name you want to add to that image. So let's rename our image appropriately:
+
+```bash
+docker tag webserver cmhayden/webserver
+```
+
+Now we have a single Docker image known by our machines under two names, so when we run the docker image ls command it will appear as two separate lines, but both will have the same image ID.
+
+Now with our image named correctly, its just a matter of running two commands to publish it to docker hub:
+
+```bash
+docker login
+docker push cmhayden/webserver
+```
+
+The docker login command asks for the Docker Hub credentials but we can opt into passing them as arguments to the command.
+
+The push command is smart enpugh to only push the bits that differ from the base nginx image used since it is already stored in the Docker Hub, as shown by the output:
+
+```The push refers to repository [docker.io/cmhayden/webserver]
+54e67b7b9cc2: Pushed
+332fa54c5886: Mounted from library/nginx
+6ba094226eea: Mounted from library/nginx
+6270adb5794c: Mounted from library/nginx
+latest: digest: sha256:74ac...e2c8 size: 1155```
+```
+
+And that's it! Docker Hub now holds the image for everyone to see and run it. It can be found at [hub.docker.com/r/cmhayden/webserver](https://hub.docker.com/r/cmhayden/webserver).
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap, or reach out to me through [my website](http://www.callumhayden.com).
