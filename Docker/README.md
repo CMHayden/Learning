@@ -830,6 +830,12 @@ latest: digest: sha256:74ac...e2c8 size: 1155```
 
 And that's it! Docker Hub now holds the image for everyone to see and run it. It can be found at [hub.docker.com/r/cmhayden/webserver](https://hub.docker.com/r/cmhayden/webserver).
 
+### Run an Image on Another Machine
+
+In order to run an image on another machine, such as the one previously published, we simply use the docker run command. Another way to achieve this is with docker pull which will allow for storing the image to be run later when we may not have internet.
+
+If you want to run an image stored in a private repository, you first need to log into the registry using docker login, after this you can use docker pull. After pulling the image, you can run it whenever you chose without needing to log in again.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap, or reach out to me through [my website](http://www.callumhayden.com).
