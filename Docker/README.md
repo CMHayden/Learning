@@ -854,6 +854,136 @@ There are many ways to get a private registry such as:
 
 To store images in a private registry, we use the same process as when pushing an image to Docker Hub. Our images' names simply need to be prefixed with the registry name before they are pushed.
 
+### Size Matters
+
+When creating an image, you want it to be as small as possible to:
+
+* Reduce pull and push times.
+
+* Use a minimum amount of space in the Registry.
+
+* Use a minimum amount of space on the machines that will run the containers.
+
+* Use a minimum amount of space on the machine that creates the image.
+
+In order to reduce the size of an image, you need to understand that the size depends on several factors:
+
+* The files included in your image.
+
+* The base image size.
+
+* Image layers.
+
+Ideally, you want to reduce these factors. Let's see how.
+
+**Files Included in Your Image**
+
+Include only necessary files in your image. For instance, avoid COPY instructions that are too broad such as this one:
+
+```
+COPY . .
+```
+
+and instead be as precise as possible. If needed, use multiple COPY instructions like so:
+
+```
+COPY ./Project/src/*.ts ./src
+COPY ./Project/package.json .
+```
+
+Of course at times we will need to use COPY instructions to copy whole folders as so:
+
+```
+COPY ./js/built /app/js
+```
+
+However it is possible to ignore files from a copy instruction using a .dockerignore file at the root of our build context that lists files and folders that should be excluded from the build, much liek a .gitignore file. Here is an example:
+
+```
+# ignore .git folder
+.git
+# ignore typeswcript files in any folder or subfolder
+**/*.ts
+```
+
+When using package managers like NPM, NuGet, apt, and so on, make sure to run them while building the image. It will avoid having to send them as the context of the image, allowing the layer caching system to cache the result of running them. So long as the definition file doesn't change, Docker will reuse its cache.
+
+**Base Image Size**
+
+The base image chosen in the FROM instruction in the Dockerfile is part of the built image.
+
+There are optimizations in which a machine will not pull the base image when pulling our image, as long as it already pulled that base image before. But sometimes, such optimizations can't run, so it's better to reference small base images.
+
+Lot's of images you can use as a base image have smaller variants. For example, the debian image is pretty big. The standard way of defining this image is like so:
+
+```
+FROM debian:8
+
+CMD["echo", "Hello Learning!"]
+```
+
+This results in an image that weighs 127MB which can be verified with the docker image ls command. Here is an optimized version of this:
+
+```
+FROM debian@8-slim
+
+CMD ["echo", "Hello Learning!"]
+```
+
+This revised definition only weighs 79.3MB, saving 38% compared to the original image size.
+
+A second example is the webserver created before. The original image is 109 MB but can be optimized like so:
+
+```
+FROM nginx:1.15-alpine
+
+COPY index.html /usr/share/nginx/html
+```
+
+This version creates an image that is only 16.1MB saving 85% when compared to the original (without *-alpine*).
+
+**Image Layers**
+
+When creating an image, Docker reads each instruction in order and the resulting partial image is kept separate; it's cached and labeled with a unique ID. Such caching is very effective because it is used at different moments of an image life:
+
+* In a future build, Docker will use the cached part instead of recreating it as long as it is possible.
+
+* When pushing a new version of the image to a registry, the common part is not pushed.
+
+* When pulling an image from a registry, the common part you already have is not pulled.
+
+Suppose we want to create an image that included PHP, so we create the following Dockerfile:
+
+```
+FROM debian:8
+
+COPY . .
+
+RUN apt-get update && apt-get upgrade && apt-get dist-upgrade -y
+RUN apt-get install -y php5
+```
+
+When building with the docker build command, it takes a long time because the two RUN steps need to download files and manipulate them. That's normal for a firt time build. But all four steps of this command get cached so that in future, it can run a lot quicker.
+
+This can be seen by re-running the same docker build command without changing anything. The full process takes less than a second and shows that it is using cache where possible.
+
+While this is efficient, it is unrealistic. In real life we would need to rebuild our images because some of the files used in the COPY step changed. If we change some of the files in the COPY step, even just a single file, we can see the cache isn't used and the build process is once again lengthy. This is because it needs to download, unpack and install all the packages again.
+
+The reason nothing was cached is because the COPY instruction was impacted by a changed file. This can be improved upon by changing the order of the instructions. As the included files with the COPY command are more likely to change than the packages needed to install PHP5, we can move the RUN commands to before the copy command like so:
+
+```
+FROM
+
+RUN apt-get update && apt-get upgrade && apt-get dist-upgrade -y
+RUN apt-get install -y php5
+
+COPY . .
+```
+
+Now if we run docker build with the new docker file, we will notice the first time takes a long time as expected. However, if we change files in the copy instruction, the RUN commands will still use cache unlike the previous example.
+
+Overall, we can see that both dockerfiles build the exact same container, but by changing the order in which instructions are executed, we achieved a huge boost in the time taken to build the container.
+
 ## Contributing
 
 Interested in contributing to this document? I'd love to hear any suggestions on what to improve, any contributions you can make, and any errors I have made. Please feel free to [email me](mailto:haydencallum4@gmail.com) and I'll be in touch asap, or reach out to me through [my website](http://www.callumhayden.com).
