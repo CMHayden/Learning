@@ -10,6 +10,12 @@ module.exports = {
                     loader: "babel-loader"
                 }
             },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
             { // use html loader for all html files and minimize the files.
                 test: /\.html$/,
                 use: [
