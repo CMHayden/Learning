@@ -113,3 +113,21 @@ const styles =
         italic; border: 1px solid black; font-size: 3em;`; 
 console.log('%cCustom Log', styles); 
 ```
+
+## Identifiers
+
+**let**
+
+Let is used to declare variables that are limited to the scope of a block statement, or expression on which it is used. *let* is initialized to a value only when a parser evaluates it. It does not create properties of the window object when declared globally (in the top-most scope).
+
+```js
+let name = "Callum";
+```
+
+**const**
+
+Const is used to declare variables that won't change. By convention, constant identifiers are in upper case. The *const* keyword works like the *let* keyword, but it creates block-scoped variables that can't be reassigned. This helps to ensure a variable becomes read only.
+
+```js
+const NAME = "Callum";
+```
